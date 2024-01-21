@@ -1,0 +1,96 @@
+<div class="layui-form" lay-href="admin/assetInbalance.html" xmlns:th="http://www.thymeleaf.org"
+	xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+	<div class="layui-form-item layui-search-box">
+		<div class="layui-inline">
+			<label class="layui-form-label">uid</label>
+			<div class="layui-input-inline">
+				<input name="userId" th:value="${userId }" class="layui-input" />
+			</div>
+		</div>
+		<div class="layui-inline">
+			<label class="layui-form-label">币种：</label>
+			<div class="layui-input-inline">
+				<select type="combox" name="coinId">
+					<option th:each="v : ${coinTypeMap}" th:value="${v.key}" th:text="${v.value}" th:selected="${v.key == coinId}"></option>
+				</select>
+			</div>
+		</div>
+		<div class="layui-inline">
+			<button class="layui-btn layui-btn-small">查询</button>
+		</div>
+	</div>
+	<hr />
+	<div class="layui-btn-box">
+	</div>
+	<div class="layui-conten-box">
+		<table class="layui-table">
+            <thead>
+            <tr>
+				
+				<th width="70">uid</th>
+                <th width="70">币种</th>
+                <th>充值数量</th>
+                <th>手工充值数量</th>
+                <th>兑换码数量</th>
+                <th>提现数量</th>
+                <th>买入(数量/金额)</th>
+                <th>卖出(数量/金额)</th>
+                <th>交易手续费</th>
+                <th>币币交易花费</th>
+                <th>币币交易收入</th>
+                <th>手续费(币币交易)</th>
+                <th>VIP6</th>
+                <th>PUSH转入</th>
+                <th>PUSH转出</th>
+                <th>理财收益</th>
+                <th>提现冻结</th>
+                <th>交易冻结</th>
+                <th>币币交易冻结</th>
+                <th>PUSH冻结</th>
+                <th>理财冻结</th>
+				<th>c2c充值</th>
+				<th>c2c提现</th>
+				<th>c2c提现冻结</th>
+                <th>返佣</th>
+                <th>计算结果</th>
+                <th>剩余数量</th>
+				<th>创建时间</th>
+            </tr>
+            </thead>
+            <tbody>
+			<tr th:each="list : ${AssetImbalanceList.list}">
+
+				<td th:text="${list.userId}"></td>
+                <td th:text="${list.coinName}"></td>
+                <td th:text="${list.recharge == null ? '':#decimal.format(list.recharge, 1, 10)}"></td>
+                <td th:text="${list.rechargeWork == null ? '':#decimal.format(list.rechargeWork, 1, 10)}"></td>
+                <td th:text="${list.rewardCoin == null ? '':#decimal.format(list.rewardCoin, 1, 10)}"></td>
+                <td th:text="${list.withdraw == null ? '':#decimal.format(list.withdraw, 1, 10)}"></td>
+                <td th:text="${list.buy == null ? '':#decimal.format(list.buy, 1, 10)}"></td>
+                <td th:text="${list.sell == null ? '':#decimal.format(list.sell, 1, 10)}"></td>
+                <td th:text="${list.fees == null ? '':#decimal.format(list.fees, 1, 10)}"></td>
+                <td th:text="${list.coinTradeBuy == null ? '':#decimal.format(list.coinTradeBuy, 1, 10)}"></td>
+                <td th:text="${list.coinTradeSell == null ? '':#decimal.format(list.coinTradeSell, 1, 10)}"></td>
+                <td th:text="${list.coinTradeFee == null ? '':#decimal.format(list.coinTradeFee, 1, 10)}"></td>
+                <td th:text="${list.vip6 == null ? '':#decimal.format(list.vip6, 1, 10)}"></td>
+                <td th:text="${list.pushIn == null ? '':#decimal.format(list.pushIn, 1, 10)}"></td>
+                <td th:text="${list.pushOut == null ? '':#decimal.format(list.pushOut, 1, 10)}"></td>
+                <td th:text="${list.financesCountSend == null ? '':#decimal.format(list.financesCountSend, 1, 10)}"></td>
+                <td th:text="${list.withdrawFrozen == null ? '':#decimal.format(list.withdrawFrozen, 1, 10)}"></td>
+                <td th:text="${list.tradeFrozen == null ? '':#decimal.format(list.tradeFrozen, 1, 10)}"></td>
+                <td th:text="${list.tradeFrozenCoin == null ? '':#decimal.format(list.tradeFrozenCoin, 1, 10)}"></td>
+                <td th:text="${list.pushFrozen == null ? '':#decimal.format(list.pushFrozen, 1, 10)}"></td>
+                <td th:text="${list.frozenFinances == null ? '':#decimal.format(list.frozenFinances, 1, 10)}"></td>
+				<td th:text="${list.c2cRecharge == null ? '':#decimal.format(list.c2cRecharge, 1, 10)}"></td>
+				<td th:text="${list.c2cWithdraw == null ? '':#decimal.format(list.c2cWithdraw, 1, 10)}"></td>
+				<td th:text="${list.c2cWithdrawFrozen == null ? '':#decimal.format(list.c2cWithdrawFrozen, 1, 10)}"></td>
+                <td th:text="${list.commission == null ? '':#decimal.format(list.commission, 1, 10)}"></td>
+                <td th:text="${list.freePlan == null ? '':#decimal.format(list.freePlan, 1, 10)}"></td>
+                <td th:text="${list.free == null ? '':#decimal.format(list.free, 1, 10)}"></td>
+				<td th:text="${list.createTime == null? '':#dates.format(list.createTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+            </tr>
+            </tbody>
+        </table>
+	</div>
+	<div class="layui-laypage-box" th:attr="lay-pages=${AssetImbalanceList.pages}, lay-curr=${AssetImbalanceList.pageNum}"></div>
+</div>

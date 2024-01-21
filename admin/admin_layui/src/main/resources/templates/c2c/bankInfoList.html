@@ -1,0 +1,41 @@
+<div class="layui-form" lay-href="admin/c2c/goBankInfoJSP.html" xmlns:th="http://www.thymeleaf.org"
+	xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+	<div class="layui-form-item layui-search-box layui-hide">
+		<div class="layui-inline">
+			<button class="layui-btn layui-btn-small">查询</button>
+		</div>
+	</div>
+	<hr />
+	<div class="layui-btn-box">
+		<button class="layui-btn layui-btn-small" shiro:hasPermission="admin/c2c/addBankInfo.html"
+				lay-href="admin/c2c/addBankInfoJSP.html" lay-target="dialog">新增</button>
+		<button class="layui-btn layui-btn-small" shiro:hasPermission="admin/c2c/deleteBankInfo.html"
+				lay-href="admin/c2c/deleteBankInfo.html" lay-checked="fid" lay-target="ajax" lay-tips="确定要删除吗?">删除</button>
+	</div>
+	<div class="layui-conten-box">
+		<table class="layui-table" width="100%">
+			<thead>
+				<tr>
+					<th></th>
+					<th>排序</th>
+					<th>中文名称</th>
+					<th>繁文名称</th>
+					<th>英文简称</th>
+					<th>logo</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="list : ${bankInfoList}">
+					<td>
+						<input type="checkbox" th:name="${list.fid}" lay-skin="primary" />
+					</td>
+					<td th:text="${list.fsort}"></td>
+					<td th:text="${list.fcnname}"></td>
+					<td th:text="${list.ftwname}"></td>
+					<td th:text="${list.fenname}"></td>
+					<td><img style="height: 20px;height: 20px;" th:alt="${list.fcnname}" th:src="${list.flogo}" /></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

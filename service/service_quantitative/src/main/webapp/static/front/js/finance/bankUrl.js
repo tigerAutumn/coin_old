@@ -1,0 +1,17 @@
+bankUrl={
+    "中国工商银行":"http://www.icbc.com.cn",
+    "中国建设银行":"http://www.ccb.com/",
+    "中国农业银行":"http://www.abchina.com/cn/",
+    "交通银行":"http://www.bankcomm.com",
+    "招商银行":"http://www.cmbchina.com/",
+    "中国邮政储蓄银行":"http://www.psbc.com/cn/index.html",
+    "中国银行":"http://www.boc.cn/",
+    "中国民生银行":"http://www.cmbc.com.cn/",
+    "中国光大银行":"http://www.cebbank.com/",
+    "兴业银行":"http://www.cib.com.cn/cn/index.html",
+    "上海浦东发展银行":"http://www.spdb.com.cn/",
+    "中信银行":"http://www.citicbank.com/",
+    "平安银行":"http://bank.pingan.com/",
+    "华夏银行":"http://www.hxb.com.cn/home/cn/",
+    "上海银行":"http://www.bosc.cn/"
+}

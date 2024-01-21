@@ -1,0 +1,113 @@
+<div class="layui-form" lay-href="admin/c2c/c2cEntrustList.html?type=1" xmlns:th="http://www.thymeleaf.org"
+	xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+	<div class="layui-form-item layui-search-box">
+		<div class="layui-inline">
+			<label class="layui-form-label">关键词[订单编号/订单备注]</label>
+			<div class="layui-input-inline">
+				<input name="keywords" th:value="${keywords }" class="layui-input" />
+			</div>
+		</div>
+		<div class="layui-inline">
+			<label class="layui-form-label">商户称呢：</label>
+			<div class="layui-input-inline">
+				<input name="businessName" th:value="${businessName}" class="layui-input" />
+			</div>
+		</div>
+		<div class="layui-inline">
+			<label class="layui-form-label">订单状态：</label>
+			<div class="layui-input-inline">
+				<select type="combox" name="status">
+					<option th:each="v : ${userC2CEntrustStatus}" th:value="${v.key}" th:text="${v.value}" th:selected="${v.key == status}"></option>
+				</select>
+			</div>
+		</div>
+		<div class="layui-inline">
+			<label class="layui-form-label">币种：</label>
+			<div class="layui-input-inline">
+				<select type="combox" name="coinTypeId">
+					<option th:each="v : ${coinTypeMap}" th:value="${v.key}" th:text="${v.value}" th:selected="${v.key == coinTypeId}"></option>
+				</select>
+			</div>
+		</div>
+		<div class="layui-inline">
+			<label class="layui-form-label">开始时间</label>
+			<div class="layui-input-inline">
+				<input name="logDate" th:value="${logDate }" class="layui-input" onclick="layui.laydate({ elem: this, istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"
+					   style="width:160px;"/>
+			</div>
+		</div>
+		<div class="layui-inline">
+			<label class="layui-form-label">结束时间</label>
+			<div class="layui-input-inline">
+				<input name="endDate" th:value="${endDate }" class="layui-input" onclick="layui.laydate({ elem: this, istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"
+					   style="width:160px;"/>
+			</div>
+		</div>
+		<div class="layui-inline">
+			<button class="layui-btn layui-btn-small">查询</button>
+		</div>
+	</div>
+	<hr />
+	<div class="layui-btn-box">
+		<button class="layui-btn layui-btn-small" shiro:hasPermission="admin/c2c/auditPassThrough.html?type=1"
+				lay-href="/admin/c2c/auditPassThrough.html?type=1" lay-checked="id" lay-target="ajax" lay-tips="确认通过此委单吗?">审核</button>
+		<button class="layui-btn layui-btn-small" shiro:hasPermission="admin/c2c/auditReject.html?type=1"
+				lay-href="/admin/c2c/auditReject.html?type=1" lay-checked="id" lay-target="ajax" lay-tips="确定要驳回此委单吗?">驳回</button>
+		<button class="layui-btn layui-btn-small" lay-href="admin/c2c/entrustOutExport.html?type=1" lay-target="export" lay-tips="确实要导出这些记录吗?">导出</button>
+	</div>
+	<div class="layui-conten-box">
+		<table class="layui-table" width="100%">
+			<thead>
+				<tr>
+					<th></th>
+					<th>币种</th>
+					<th>订单编号</th>
+					<th>用户id</th>
+					<th>用户姓名</th>
+					<th>提交时间</th>
+					<th>修改时间</th>
+					<th>商户昵称</th>
+					<th>订单备注</th>
+					<th>订单类型</th>
+					<th>订单数量</th>
+					<th>价格</th>
+					<th>订单金额</th>
+					<th>订单来源</th>
+					<th>审核人id</th>
+					<th>订单状态</th>
+					<th>详情</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="list : ${UserC2CEntrustList.list}">
+					<td>
+						<input type="checkbox" th:name="${list.id}" lay-skin="primary" />
+					</td>
+					<td th:text="${list.coinName}"></td>
+					<td th:text="${list.orderNumber}"></td>
+					<td th:text="${list.userId}"></td>
+					<td th:text="${list.userName}"></td>
+					<td th:text="${list.createTime == null? '':#dates.format(list.createTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+					<td th:text="${list.updateTime == null? '':#dates.format(list.updateTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+					<td th:text="${list.businessName}"></td>
+					<td th:text="${list.remark}"></td>
+					<td th:text="${list.typeString}"></td>
+					<td th:text="${list.amount == null ? '':#decimal.format(list.amount, 1, 10)}"></td>
+					<td th:text="${list.price == null ? '':#decimal.format(list.price, 1, 10)}"></td>
+					<td th:text="${list.money == null ? '':#decimal.format(list.money, 1, 10)}"></td>
+					<td th:text="${list.platformString}"></td>
+					<td th:text="${list.adminName}"></td>
+					<td th:text="${list.statusString}"></td>
+					<td >
+						<div class="layui-btn-box">
+							<button class="layui-btn layui-btn-small" 
+								   th:attr="lay-href=${'admin/c2c/c2cEntrustDetails?entrustId=' + list.id}" lay-target="dialogInfo" lay-height="310" lay-width="550">订单详情</button>
+
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="layui-laypage-box" th:attr="lay-pages=${UserC2CEntrustList.pages}, lay-curr=${UserC2CEntrustList.pageNum}"></div>
+</div>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qkwl.service.commission.dao.UserMapper" >
+
+  <select id="getIntroByUID" parameterType="java.lang.Integer" resultType="Fuser">
+   SELECT b.fid, b.floginname
+   FROM f_user a, f_user b
+   WHERE b.fid = a.fintrouid and a.fid = #{uid}
+  </select>
+  
+  <select id="getLoginNameByUID" parameterType="java.lang.Integer" resultType="Fuser">
+   SELECT floginname, fregistertime
+   FROM f_user
+   WHERE fid = #{uid}
+  </select>
+</mapper>

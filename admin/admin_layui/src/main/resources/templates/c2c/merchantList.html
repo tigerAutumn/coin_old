@@ -1,0 +1,63 @@
+<div class="layui-form" lay-href="admin/c2c/c2cMerchantList.html" xmlns:th="http://www.thymeleaf.org"
+	xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+
+	<div class="layui-form-item layui-search-box"  style = "display:none">
+		<div class="layui-inline">
+			<button class="layui-btn layui-btn-small">刷新</button>
+		</div>
+	</div>
+
+	<div class="layui-btn-box">
+		<button class="layui-btn layui-btn-small" shiro:hasPermission="admin/c2c/addMerchant.html"
+				lay-href="/admin/c2c/goC2CMerchantJSP.html?url=c2c/addMerchant" lay-target="dialog">新增</button>
+		<button class="layui-btn layui-btn-small" shiro:hasPermission="admin/c2c/updateMerchant.html"
+				lay-href="/admin/c2c/goC2CMerchantJSP.html?url=c2c/updateMerchant" lay-checked="id" lay-target="dialog">修改</button>
+		<button class="layui-btn layui-btn-small" shiro:hasPermission="admin/c2c/updateMerchantStatus.html"
+				lay-href="/admin/c2c/updateMerchantStatus.html?status=1" lay-checked="id" lay-target="ajax" lay-tips="确定要启用吗?">启用</button>
+		<button class="layui-btn layui-btn-small" shiro:hasPermission="admin/c2c/updateMerchantStatus.html"
+				lay-href="/admin/c2c/updateMerchantStatus.html?status=0" lay-checked="id" lay-target="ajax" lay-tips="确定要禁用吗?">禁用</button>
+	</div>
+	<div class="layui-conten-box">
+		<table class="layui-table" width="100%">
+			<thead>
+				<tr>
+					<th></th>
+					<th>ID</th>
+					<th>币种</th>
+					<th>商户昵称</th>
+					<th>商户类型</th>
+					<th>开户行姓名</th>
+					<th>开户行</th>
+					<th>银行卡号</th>
+					<th>商户手机号</th>
+					<th>成交笔数</th>
+					<th>成交数量</th>
+					<th>成交用时</th>
+					<th>排序</th>
+					<th>状态</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="list : ${C2CBusinessList}">
+					<td>
+						<input type="checkbox" th:name="${list.id}" lay-skin="primary" />
+					</td>
+					<td th:text="${list.id}"></td>
+					<td th:text="${list.shortName}"></td>
+					<td th:text="${list.businessName}"></td>
+					<td th:text="${list.typeString}"></td>
+					<td th:text="${list.bankAccountName}"></td>
+					<td th:text="${list.bankName}+${list.bankAddress}"></td>
+					<td th:text="${list.bankNumber}"></td>
+					<td th:text="${list.phone}"></td>
+					<td th:text="${list.orderCount}"></td>
+					<td th:text="${list.coinCount}"></td>
+					<td th:text="${list.orderTime}"></td>
+					<td th:text="${list.sortId}"></td>
+					<td th:text="${list.statusString}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+</div>

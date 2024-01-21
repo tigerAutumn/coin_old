@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qkwl.service.admin.bc.dao.CommissionMapper">
+
+	<select id="countCommissionListByParam" resultType="java.lang.Integer" parameterType="java.util.Map">
+        select count(id)
+        from commission where 1=1
+        <if test="inviterId != null">
+            and inviter_id = #{inviterId}
+        </if>
+        <if test="inviterLoginname != null">
+            and inviter_loginname = #{inviterLoginname}
+        </if>
+        <if test="inviteeId != null">
+            and invitee_id = #{inviteeId}
+        </if>
+        <if test="inviteeLoginname != null">
+            and invitee_loginname = #{inviteeLoginname}
+        </if>
+        <if test="beginDate != null">
+            <![CDATA[
+			and merchandise_time >= #{beginDate}
+		]]>
+        </if>
+        <if test="endDate != null">
+            <![CDATA[
+			and merchandise_time <= #{endDate}
+		]]>
+        </if>
+        <if test="status != null">
+            and status = #{status}
+        </if>
+    </select>
+    
+    <select id="getCommissionPageList" resultType="Commission" parameterType="java.util.Map">
+        select *
+        from commission where 1=1
+        <if test="inviterId != null">
+            and inviter_id = #{inviterId}
+        </if>
+        <if test="inviterLoginname != null">
+            and inviter_loginname = #{inviterLoginname}
+        </if>
+        <if test="inviteeId != null">
+            and invitee_id = #{inviteeId}
+        </if>
+        <if test="inviteeLoginname != null">
+            and invitee_loginname = #{inviteeLoginname}
+        </if>
+        <if test="beginDate != null">
+            <![CDATA[
+			and merchandise_time >= #{beginDate}
+		]]>
+        </if>
+        <if test="endDate != null">
+            <![CDATA[
+			and merchandise_time <= #{endDate}
+		]]>
+        </if>
+        <if test="status != null">
+            and status = #{status}
+        </if>
+        <if test="orderField != null">
+            order by ${orderField} ${orderDirection}
+        </if>
+        limit #{offset},#{limit}
+    </select>
+    
+    <select id="getCommissionById" resultType="Commission" parameterType="java.lang.Integer">
+        select *
+        from commission where id = #{id}
+    </select>
+    
+    <update id="updateCommission" parameterType="Commission">
+    update commission
+    set 
+      	status = #{status}
+    where 
+    	id = #{id}
+  </update>
+  
+  <select id="selectIssuedAmountByIntroId" resultType="java.math.BigDecimal" parameterType="java.lang.Integer">
+        select sum(commission_amount)
+        from commission where inviter_id = #{inviterId} and status = 2
+        group by inviter_id;
+    </select>
+  
+</mapper>

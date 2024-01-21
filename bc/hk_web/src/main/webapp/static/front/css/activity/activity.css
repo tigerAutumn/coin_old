@@ -1,0 +1,55 @@
+@charset "utf-8";
+/*********************活动首页***************/
+.activity .content {
+	height: 425px;
+	border-bottom: 1px solid #f1f1f1;
+}
+
+.activity .content .exchange {
+	height: 425px;
+	background: url("../../images/activity/exchangeCode-bg.png") no-repeat 0 0px;
+}
+
+.activity .exchange-infos {
+	position: absolute;
+	height: 200px;
+	top: 150px;
+}
+
+.activity .info {
+	color: #FFF;
+	font-size: 14px;
+	border-radius: 3px;
+	width: 360px;
+	height: 50px;
+}
+
+.activity .title input {
+	width: 250px;
+	height: 35px;
+	margin: 0px;
+	color: black;    
+	padding-left: 10px;
+	line-height: 35px;
+}
+
+.activity .title span {
+	width: 105px;
+	height: 35px;
+	background-color: #c83935;
+	display: inline-block;
+	line-height: 35px;
+	float: left;
+}
+
+.activity .info button {
+	background-color: #c83935;
+	border: none;
+	width: 280px;
+	height: 35px;
+	border-radius: 5px;
+}
+.czcodeinfos{
+	border:1px solid #f1f1f1;
+	margin-top:35px;
+}

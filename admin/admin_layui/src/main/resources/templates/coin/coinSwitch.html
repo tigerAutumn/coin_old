@@ -1,0 +1,25 @@
+<div xmlns:th="http://www.thymeleaf.org" class="layui-form layui-form-pane" lay-href="admin/coinSwitch.html">
+
+	<div class="layui-form-item">
+		<p>请确保转换的两种币都是禁用状态，且新币种还没有客户使用</p>
+	</div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">旧币种：</label>
+        <div class="layui-input-block">
+            <select type="combox" name="oldCoinId">
+                <option th:each="v : ${coinMap}" th:value="${v.key}" th:text="${v.value}"></option>
+            </select>
+        </div>
+    </div>
+	<div class="layui-form-item">
+        <label class="layui-form-label">新币种：</label>
+        <div class="layui-input-block">
+            <select type="combox" name="newCoinId">
+                <option th:each="v : ${coinMap}" th:value="${v.key}" th:text="${v.value}"></option>
+            </select>
+        </div>
+    </div>
+</div>
+<script>
+
+</script>

@@ -1,0 +1,43 @@
+redis:
+  host: r-j6c54a327ff48744.redis.rds.aliyuncs.com
+  port: 6379
+  password: Tubao502
+  timeout: 5000
+  pool:
+    minIdle: 500
+    maxIdle: 500
+    maxTotal: 2000
+    maxWaitMillis: 5000
+    testWhileIdle: true
+    testOnBorrow: true
+    testOnReturn: true
+
+ossConstant:
+  bucketBase: tubaowangtestbucket
+  accessId: LTAIzoYYkzbQkNX4
+  accessKey: 8a0C6XRa9vOdVuPjCkPXc8eyjtSSDS
+  ossEndpoint: oss-ap-southeast-1-internal.aliyuncs.com
+
+aliyun:
+  mq:
+    accessKey: LTAIfkp3bsnn8Q4Y
+    secretKey: 6kkR8Kj0rRRNpLXGAJaVPIsS06Ujgj
+    onsAddr: http://onsaddr-internet.aliyun.com/rocketmq/nsaddr4client-internet
+    topic:
+      entrust_state: SG_HOTCOIN_ENTRUST_STATE_TEST_1
+      user_action: SG_HOTCOIN_USER_ACTION_TEST_1
+      admin_action: SG_HOTCOIN_ADMIN_ACTION_TEST_1
+      validate: SG_HOTCOIN_VALIDATE_TEST_1
+      score: SG_HOTCOIN_SCORE_TEST_1
+    pid:
+      entrustState: PID_SG_HOTCOIN_ENTRUST_STATE_TEST_1
+      validate: PID_SG_HOTCOIN_VALIDATE_TEST_1
+      score: PID_SG_HOTCOIN_SCORE_TEST_1
+      userAction: PID_SG_HOTCOIN_USER_ACTION_TEST_1
+      adminAction: PID_SG_HOTCOIN_ADMIN_ACTION_TEST_1
+    cid:
+      entrustState: CID_SG_HOTCOIN_ENTRUST_STATE_TEST_1
+      validate: CID_SG_HOTCOIN_VALIDATE_TEST_1
+      score: CID_SG_HOTCOIN_SCORE_TEST_1
+      userAction: CID_SG_HOTCOIN_USER_ACTION_TEST_1
+      adminAction: CID_SG_HOTCOIN_ADMIN_ACTION_TEST_1

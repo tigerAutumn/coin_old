@@ -1,0 +1,111 @@
+<div class="layui-form layui-form-pane" xmlns:th="http://www.thymeleaf.org" lay-href="admin/c2c/updateMerchant.html">
+	<input type="hidden" name="id" th:value="${Business.id}"/>
+	<input type="hidden" name="status" th:value="${Business.status}"/>
+	<div class="layui-form-item">
+        <label class="layui-form-label">排序：</label>
+        <div class="layui-input-block">
+            <input type="number" class="layui-input" name="sortId" lay-verify="required"  th:value="${Business.sortId}"/>
+        </div>
+    </div> 
+    <div class="layui-form-item">
+        <label class="layui-form-label">币种：</label>
+        <div class="layui-input-block">
+            <select type="combox" name="coinId">
+                <option th:each="v : ${coinTypeMap}" th:value="${v.key}" th:text="${v.value}"  th:selected="${v.key eq Business.coinId}"></option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">商户昵称：</label>
+        <div class="layui-input-block">
+            <input class="layui-input" name="businessName" lay-verify="required" th:value="${Business.businessName}" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">商户类型：</label>
+        <div class="layui-input-block">
+            <select type="combox" name="type">
+                <option th:each="v : ${C2CBusinessType}" th:value="${v.key}" th:text="${v.value}" 
+						th:selected="${v.key eq Business.type}"></option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">开户人姓名：</label>
+        <div class="layui-input-block">
+            <input class="layui-input" name="bankAccountName" lay-verify="required"  th:value="${Business.bankAccountName}"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">银行：</label>
+         <div class="layui-input-block">
+            <input class="layui-input" name="bankName" lay-verify="required"  th:value="${Business.bankName}" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">开户行地址：</label>
+         <div class="layui-input-block">
+            <input class="layui-input" name="bankAddress" lay-verify="required"  th:value="${Business.bankAddress}"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">银行卡号：</label>
+        <div class="layui-input-block">
+            <input class="layui-input" name="bankNumber" lay-verify="required"  th:value="${Business.bankNumber}"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">商户电话：</label>
+        <div class="layui-input-block">
+            <input class="layui-input" name="phone" lay-verify="required"  th:value="${Business.phone}"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">成交笔数：</label>
+        <div class="layui-input-block">
+            <input type="number" class="layui-input" name="orderCount" lay-verify="required"  th:value="${Business.orderCount}"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"> 成交数量：</label>
+        <div class="layui-input-block">
+            <input type="number" class="layui-input" name="coinCount" lay-verify="required"  th:value="${Business.coinCount}"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">成交用时：</label>
+        <div class="layui-input-block">
+            <input class="layui-input" name="orderTime" lay-verify="required"  th:value="${Business.orderTime}"/>
+        </div>
+    </div>
+</div>
+<script type="application/javascript">
+    layui.use(['upload'], function () {
+        var $ = layui.jquery, layer = layui.layer;
+
+        // 图片上传
+        var msgIndex = 0;
+        layui.upload({
+                         url: '/article/upload.html?type=3',
+                         type: "jpg|png",
+                         before: function () {
+                             msgIndex = layer.msg('上传中······', {
+                                 icon: 16
+                                 , shade: 0.01
+                                 , time: 0
+                             });
+                         },
+                         success: function (res) {
+                             layer.close(msgIndex);
+                             if (res.state === "SUCCESS") {
+                                 $("#updateSystemArgsImg").text(res.url);
+                             } else {
+                                 layer.msg(res.state, {
+                                     icon: 2
+                                     , shift: 6
+                                 });
+                             }
+                         }
+                     });
+    });
+</script>

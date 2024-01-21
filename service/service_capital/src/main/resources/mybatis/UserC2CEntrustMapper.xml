@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qkwl.service.capital.dao.c2c.UserC2CEntrustMapper" >
+  <resultMap id="BaseResultMap" type="com.qkwl.common.dto.c2c.UserC2CEntrust" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="coin_id" property="coinId" jdbcType="INTEGER" />
+    <result column="bank_id" property="bankId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="business_id" property="businessId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="amount" property="amount" jdbcType="DECIMAL" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="bank" property="bank" jdbcType="VARCHAR" />
+    <result column="bank_account" property="bankAccount" jdbcType="VARCHAR" />
+    <result column="bank_code" property="bankCode" jdbcType="VARCHAR" />
+    <result column="bank_address" property="bankAddress" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="admin_id" property="adminId" jdbcType="INTEGER" />
+    <result column="version" property="version" jdbcType="INTEGER" />
+    <result column="platform" property="platform" jdbcType="INTEGER" />
+    <result column="money" property="money" jdbcType="DECIMAL" />
+    <result column="order_number" property="orderNumber" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, coin_id, bank_id, user_id, create_time, amount, type, status, remark, bank, bank_account, 
+    bank_code,bank_address, phone, update_time, admin_id, version, platform,money,order_number,price
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_c2c_entrust
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_c2c_entrust
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qkwl.common.dto.c2c.UserC2CEntrust" useGeneratedKeys="true" keyProperty="id">
+    insert into user_c2c_entrust (id, coin_id, bank_id, business_id,
+      user_id, create_time, amount, 
+      type, status, remark, 
+      bank, bank_account, bank_code, bank_address,
+      phone, update_time, admin_id, 
+      version, platform,money,order_number,price)
+    values (#{id,jdbcType=INTEGER}, #{coinId,jdbcType=INTEGER}, #{bankId,jdbcType=INTEGER}, #{businessId,jdbcType=INTEGER},
+      #{userId,jdbcType=INTEGER}, NOW(), #{amount,jdbcType=DECIMAL}, 
+      #{type,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+      #{bank,jdbcType=VARCHAR}, #{bankAccount,jdbcType=VARCHAR}, #{bankCode,jdbcType=VARCHAR}, #{bankAddress,jdbcType=VARCHAR},
+      #{phone,jdbcType=VARCHAR}, NOW(), #{adminId,jdbcType=INTEGER}, 
+      #{version,jdbcType=INTEGER}, #{platform,jdbcType=INTEGER},#{money,jdbcType=DECIMAL},#{orderNumber,jdbcType=VARCHAR},#{price,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qkwl.common.dto.c2c.UserC2CEntrust" useGeneratedKeys="true" keyProperty="id">
+    insert into user_c2c_entrust
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="coinId != null" >
+        coin_id,
+      </if>
+      <if test="bankId != null" >
+        bank_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="bank != null" >
+        bank,
+      </if>
+      <if test="bankAccount != null" >
+        bank_account,
+      </if>
+      <if test="bankCode != null" >
+        bank_code,
+      </if>
+      <if test="bankAddress != null" >
+        bank_address,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="adminId != null" >
+        admin_id,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+      <if test="platform != null" >
+        platform,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="orderNumber != null" >
+        order_number,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="coinId != null" >
+        #{coinId,jdbcType=INTEGER},
+      </if>
+      <if test="bankId != null" >
+        #{bankId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null" >
+        #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null" >
+        #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCode != null" >
+        #{bankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAddress != null" >
+        #{bankAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adminId != null" >
+        #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="platform != null" >
+        #{platform,jdbcType=INTEGER},
+      </if>
+       <if test="money != null" >
+        #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="orderNumber != null" >
+        #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qkwl.common.dto.c2c.UserC2CEntrust" >
+    update user_c2c_entrust
+    <set >
+      <if test="coinId != null" >
+        coin_id = #{coinId,jdbcType=INTEGER},
+      </if>
+      <if test="bankId != null" >
+        bank_id = #{bankId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null" >
+        bank = #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null" >
+        bank_account = #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCode != null" >
+        bank_code = #{bankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAddress != null" >
+        bank_address = #{bankAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = NOW(),
+      </if>
+      <if test="adminId != null" >
+        admin_id = #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=INTEGER} + 1,
+      </if>
+      <if test="platform != null" >
+        platform = #{platform,jdbcType=INTEGER},
+      </if>
+      <if test="money != null" >
+       money =  #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="orderNumber != null" >
+        order_number = #{orderNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+       price =  #{price,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER} and version = #{version,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qkwl.common.dto.c2c.UserC2CEntrust" >
+    update user_c2c_entrust
+    set coin_id = #{coinId,jdbcType=INTEGER},
+      bank_id = #{bankId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      amount = #{amount,jdbcType=DECIMAL},
+      type = #{type,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      bank = #{bank,jdbcType=VARCHAR},
+      bank_account = #{bankAccount,jdbcType=VARCHAR},
+      bank_code = #{bankCode,jdbcType=VARCHAR},
+      bank_address = #{bankAddress,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      admin_id = #{adminId,jdbcType=INTEGER},
+      version = #{version,jdbcType=INTEGER},
+      platform = #{platform,jdbcType=INTEGER},
+      money =  #{money,jdbcType=DECIMAL},
+      order_number = #{orderNumber,jdbcType=VARCHAR},
+      price =  #{price,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectList" parameterType="com.qkwl.common.dto.c2c.UserC2CEntrust" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    from user_c2c_entrust
+    <where>
+    	and 1=1
+    	<if test="userId !=null and userId !=0 ">
+    		and user_id = #{userId}		
+    	</if>
+    	<if test="startTime !=null and endTime !=null">
+    		and create_time between #{startTime} and #{endTime}
+    	</if>
+    	<if test="type !=null and type !=0">
+    		and type = #{type}		
+    	</if>
+    	<if test="coinId !=null and coinId !=0">
+    		and coin_id = #{coinId}		
+    	</if>
+    	<if test="statusList != null">
+			and status in
+			<foreach collection="statusList" item="item" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+    </where>
+    order by create_time desc
+  </select>
+</mapper>

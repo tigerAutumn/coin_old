@@ -1,0 +1,64 @@
+<div xmlns:th="http://www.thymeleaf.org" class="layui-form layui-form-pane" lay-href="admin/c2c/addBankInfo.html">
+    <div class="layui-form-item">
+        <label class="layui-form-label">排序：</label>
+        <div class="layui-input-block">
+            <input type ="number" class="layui-input" name="fsort" lay-verify="required" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">中文名称：</label>
+        <div class="layui-input-block">
+            <input class="layui-input" name="fcnname" lay-verify="required" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">繁文名称：</label>
+        <div class="layui-input-block">
+            <input class="layui-input" name="ftwname" lay-verify="required"  />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">英文简称：</label>
+        <div class="layui-input-block">
+            <input class="layui-input" name="fenname" lay-verify="required"  />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">logo：</label>
+        <div class="layui-input-block">
+            <input class="layui-input" name="flogo" id="flogo" />
+            <input class="layui-upload-file" type="file" name="file" data-file="flogo"/>
+        </div>
+    </div>
+</div>
+<script>
+    layui.use(['upload'], function () {
+        var $ = layui.jquery
+            , layer = layui.layer;
+        // 图片上传
+        var msgIndex = 0;
+        layui.upload({
+                         url: '/article/upload.html?type=7',
+                         type: "jpg|png",
+                         before: function () {
+                             msgIndex = layer.msg('上传中······', {
+                                 icon: 16
+                                 , shade: 0.01
+                                 , time: 0
+                             });
+                         },
+                         success: function (res, input) {
+                             layer.close(msgIndex);
+                             if (res.state === "SUCCESS") {
+                                 $("#" + $(input).data().file).val(res.url);
+                                 console.log($(input).data().file);
+                             } else {
+                                 layer.msg(res.state, {
+                                     icon: 2
+                                     , shift: 6
+                                 });
+                             }
+                         }
+                     });
+    });
+</script>

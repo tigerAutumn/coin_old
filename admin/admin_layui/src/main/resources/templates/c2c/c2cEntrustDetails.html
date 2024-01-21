@@ -1,0 +1,32 @@
+<div xmlns:th="http://www.thymeleaf.org" >
+	<table border="1" class= "layui-table" style = "font-size: 18px;">    
+		<tr >
+			<td>开户名：</td><td th:text="${entrustDetails.bankAccount}"></td>
+		</tr>
+		<tr >
+			<td>银行：</td><td th:text="${entrustDetails.bank}"></td>
+		</tr>
+		<tr >
+			<td>开户行：</td><td th:text=" ${entrustDetails.bankAddress}"></td>
+		</tr>
+		<tr >
+			<td>银行卡号：</td><td th:text="${entrustDetails.bankCode}"></td>
+		</tr>
+		<tr >
+			<td>转账金额：</td><td th:text="${entrustDetails.money == null ? '':#decimal.format(entrustDetails.money, 1, 10)}" style="color:red;font-weight:bold;"></td>
+		</tr>
+		<tr >
+			<td>订单备注：</td><td th:text="${entrustDetails.remark}"></td>
+		</tr>
+		<tr >
+			<td>订单编号：</td><td th:text="${entrustDetails.orderNumber}"></td>
+		</tr>
+					
+</table>
+
+
+
+</div>
+
+<script>
+</script>

@@ -1,0 +1,47 @@
+@charset "utf-8";
+
+.record .datainput {
+	border: 1px solid #bababa;
+	width: 100px;
+	outline: none;
+	transition: all .1s ease;
+}
+
+.record .datainput:hover {
+	border: 1px solid #1174b1;
+}
+
+.record .databtn {
+	padding: 3px 15px;
+	cursor: pointer;
+	margin: 0 10px;
+	display: inline-block;
+}
+
+.record .datatime {
+	width: 85px;
+	height: 25px;
+	line-height: 25px;
+	color: #333333;
+	background-color: #f8f8f8;
+	border: none;
+	text-align: center;
+	padding: 0;
+}
+
+.datatime-sel {
+	color: #fff !important;
+	background-color: #da2e22 !important;
+}
+
+.record .datatips {
+	padding: 5px 5px;
+}
+
+.record .typeselect {
+	width: 100px;
+	display: inline-block;
+	margin: 0 10px;
+	height: inherit;
+	padding: 3px 12px;
+}

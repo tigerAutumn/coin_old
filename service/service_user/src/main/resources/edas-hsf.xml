@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:hsf="http://www.taobao.com/hsf" xmlns="http://www.springframework.org/schema/beans"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+ 		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+ 		http://www.taobao.com/hsf
+ 		http://www.taobao.com/hsf/hsf.xsd" default-autowire="byName">
+
+	<hsf:provider id="userServiceProvider" interface="com.qkwl.common.rpc.user.IUserService"
+				  ref="userService" version="1.0" group="user">
+	</hsf:provider>
+
+	<hsf:provider id="questionServiceProvider" interface="com.qkwl.common.rpc.user.IQuestionService"
+				  ref="questionService" version="1.0" group="user">
+	</hsf:provider>
+
+	<hsf:provider id="userIdentityServiceProvider" interface="com.qkwl.common.rpc.user.IUserIdentityService"
+				  ref="userIdentityService" version="1.0" group="user">
+	</hsf:provider>
+
+	<hsf:provider id="userApiServiceProvider" interface="com.qkwl.common.rpc.user.IUserApiService"
+				  ref="userApiService" version="1.0" group="user">
+	</hsf:provider>
+
+	<hsf:provider id="userSecurityServiceProvider" interface="com.qkwl.common.rpc.user.IUserSecurityService"
+				  ref="userSecurityService" version="1.0" group="user">
+	</hsf:provider>
+	
+	<hsf:provider id="userFavoriteServiceProvider" interface="com.qkwl.common.rpc.user.IUserFavoriteService"
+				  ref="userFavoriteService" version="1.0" group="user">
+	</hsf:provider>
+	
+	<hsf:provider id="userSecurityV2ServiceProvider" interface="com.qkwl.common.rpc.v2.UserSecurityService"
+				  ref="userSecurityV2Service" version="1.0" group="user">
+	</hsf:provider>
+</beans>

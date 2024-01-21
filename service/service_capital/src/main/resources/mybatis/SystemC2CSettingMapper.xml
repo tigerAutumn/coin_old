@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qkwl.service.capital.dao.c2c.SystemC2CSettingMapper" >
+  <resultMap id="BaseResultMap" type="com.qkwl.common.dto.c2c.SystemC2CSetting" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="key" property="key" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="value" property="value" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="version" property="version" jdbcType="INTEGER" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, system_c2c_setting.key, system_c2c_setting.type, value, description, version, url
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from system_c2c_setting
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from system_c2c_setting
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qkwl.common.dto.c2c.SystemC2CSetting" >
+    insert into system_c2c_setting (id, key, type, 
+      value, description, version, 
+      url)
+    values (#{id,jdbcType=INTEGER}, #{key,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+      #{value,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER}, 
+      #{url,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qkwl.common.dto.c2c.SystemC2CSetting" >
+    insert into system_c2c_setting
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="key != null" >
+        key,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="value != null" >
+        value,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="key != null" >
+        #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="value != null" >
+        #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qkwl.common.dto.c2c.SystemC2CSetting" >
+    update system_c2c_setting
+    <set >
+      <if test="key != null" >
+        key = #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="value != null" >
+        value = #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qkwl.common.dto.c2c.SystemC2CSetting" >
+    update system_c2c_setting
+    set key = #{key,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      value = #{value,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      version = #{version,jdbcType=INTEGER},
+      url = #{url,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    from system_c2c_setting
+  </select>
+</mapper>

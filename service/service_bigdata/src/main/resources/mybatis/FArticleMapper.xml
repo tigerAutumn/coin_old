@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qkwl.service.entrust.dao.FArticleMapper" >
+
+  <resultMap id="BaseResultMap" type="FArticle">
+    <id column="fid" jdbcType="INTEGER" property="fid" />
+    <result column="fcreateadmin" jdbcType="INTEGER" property="fcreateadmin" />
+    <result column="fmodifyadmin" jdbcType="INTEGER" property="fmodifyadmin" />
+    <result column="farticletype" jdbcType="INTEGER" property="farticletype" />
+    <result column="ftitle" jdbcType="VARCHAR" property="ftitle" />
+    <result column="fkeyword" jdbcType="VARCHAR" property="fkeyword" />
+    <result column="fdescription" jdbcType="VARCHAR" property="fdescription" />
+    <result column="fcreatedate" jdbcType="TIMESTAMP" property="fcreatedate" />
+    <result column="fupdatetime" jdbcType="TIMESTAMP" property="fupdatetime" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="flookcount" jdbcType="INTEGER" property="flookcount" />
+    <result column="fistop" jdbcType="BIT" property="fistop" />
+    <result column="findeximg" jdbcType="VARCHAR" property="findeximg" />
+    <result column="fcontent" jdbcType="LONGVARCHAR" property="fcontent" />
+    <result column="ftypename" jdbcType="VARCHAR" property="farticletype_s" />
+    <result column="fcadminname" jdbcType="LONGVARCHAR" property="fcreateadmin_s" />
+    <result column="fmadminname" jdbcType="LONGVARCHAR" property="fmodifyadmin_s" />
+    <result column="fagentid" jdbcType="INTEGER" property="fagentid" />
+    <result column="ftype" jdbcType="INTEGER" property="ftype" />
+  </resultMap>
+  
+  <sql id="articleColumn">
+    f_article.fid, fcreateadmin, fmodifyadmin, farticletype, ftitle, fkeyword, f_article.fdescription, 
+    fcreatedate, f_article.fupdatetime, f_article.version, flookcount, fistop, findeximg, fcontent, f_article.fagentid, f_article.ftype
+  </sql>
+
+  <select id="searchByKeyword" resultType="FArticle" parameterType="java.lang.String" >
+    select <include refid="articleColumn" /> from f_article where 
+    ftitle like concat('%',#{keyword,jdbcType=VARCHAR},'%')
+    or
+    fkeyword like concat('%',#{keyword,jdbcType=VARCHAR},'%')
+  </select>
+
+</mapper>

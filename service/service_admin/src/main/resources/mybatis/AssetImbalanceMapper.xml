@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qkwl.service.admin.bc.dao.AssetImbalanceMapper" >
+  <resultMap id="BaseResultMap" type="com.qkwl.common.dto.capital.AssetImbalance" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="coin_id" property="coinId" jdbcType="INTEGER" />
+    <result column="recharge" property="recharge" jdbcType="DECIMAL" />
+    <result column="recharge_work" property="rechargeWork" jdbcType="DECIMAL" />
+    <result column="reward_coin" property="rewardCoin" jdbcType="DECIMAL" />
+    <result column="withdraw" property="withdraw" jdbcType="DECIMAL" />
+    <result column="buy" property="buy" jdbcType="DECIMAL" />
+    <result column="sell" property="sell" jdbcType="DECIMAL" />
+    <result column="fees" property="fees" jdbcType="DECIMAL" />
+    <result column="coin_trade_buy" property="coinTradeBuy" jdbcType="DECIMAL" />
+    <result column="coin_trade_sell" property="coinTradeSell" jdbcType="DECIMAL" />
+    <result column="coin_trade_fee" property="coinTradeFee" jdbcType="DECIMAL" />
+    <result column="vip6" property="vip6" jdbcType="DECIMAL" />
+    <result column="push_in" property="pushIn" jdbcType="DECIMAL" />
+    <result column="push_out" property="pushOut" jdbcType="DECIMAL" />
+    <result column="finances_count_send" property="financesCountSend" jdbcType="DECIMAL" />
+    <result column="withdraw_frozen" property="withdrawFrozen" jdbcType="DECIMAL" />
+    <result column="trade_frozen" property="tradeFrozen" jdbcType="DECIMAL" />
+    <result column="trade_frozen_coin" property="tradeFrozenCoin" jdbcType="DECIMAL" />
+    <result column="push_frozen" property="pushFrozen" jdbcType="DECIMAL" />
+    <result column="frozen_finances" property="frozenFinances" jdbcType="DECIMAL" />
+    <result column="c2c_recharge" property="c2cRecharge" jdbcType="DECIMAL" />
+    <result column="c2c_withdraw" property="c2cWithdraw" jdbcType="DECIMAL" />
+    <result column="c2c_withdraw_frozen" property="c2cWithdrawFrozen" jdbcType="DECIMAL" />
+    <result column="commission" property="commission" jdbcType="DECIMAL" />
+    <result column="free_plan" property="freePlan" jdbcType="DECIMAL" />
+    <result column="free" property="free" jdbcType="DECIMAL" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="coin_name" property="coinName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    asset_imbalance.id, asset_imbalance.user_id, asset_imbalance.coin_id, asset_imbalance.recharge, asset_imbalance.recharge_work, asset_imbalance.reward_coin, asset_imbalance.withdraw, asset_imbalance.buy, asset_imbalance.sell, 
+    asset_imbalance.fees, asset_imbalance.coin_trade_buy, asset_imbalance.coin_trade_sell, asset_imbalance.coin_trade_fee, asset_imbalance.vip6, asset_imbalance.push_in, asset_imbalance.push_out, asset_imbalance.finances_count_send, 
+    asset_imbalance.withdraw_frozen, asset_imbalance.trade_frozen, asset_imbalance.trade_frozen_coin, asset_imbalance.push_frozen, asset_imbalance.frozen_finances, asset_imbalance.c2c_recharge, 
+    asset_imbalance.c2c_withdraw, asset_imbalance.c2c_withdraw_frozen, asset_imbalance.commission, asset_imbalance.free_plan, asset_imbalance.free, asset_imbalance.create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from asset_imbalance
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectByUidAndCoinId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from asset_imbalance
+    where user_id = #{uid,jdbcType=INTEGER} and coin_id = #{coinid,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectByParams" resultMap="BaseResultMap" parameterType="AssetImbalance" >
+    select 
+    <include refid="Base_Column_List" />,system_coin_type.name as coin_name
+    from asset_imbalance,system_coin_type
+    where 1=1 and asset_imbalance.coin_id = system_coin_type.id 
+    <if test="userId != null" >
+    and  user_id = #{userId,jdbcType=INTEGER} 
+    </if>
+    <if test="coinId != null" >
+    and coin_id = #{coinId,jdbcType=INTEGER}
+    </if>
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from asset_imbalance
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  <delete id="deleteByUidAndCoinId" parameterType="java.lang.Integer" >
+    delete from asset_imbalance
+    where user_id = #{userId,jdbcType=INTEGER} and coin_id = #{coinId,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="insert" parameterType="com.qkwl.common.dto.capital.AssetImbalance" >
+    insert into asset_imbalance (id, user_id, coin_id, 
+      recharge, recharge_work, reward_coin, 
+      withdraw, buy, sell, 
+      fees, coin_trade_buy, coin_trade_sell, 
+      coin_trade_fee, vip6, push_in, 
+      push_out, finances_count_send, withdraw_frozen, 
+      trade_frozen, trade_frozen_coin, push_frozen, 
+      frozen_finances, c2c_recharge, c2c_withdraw, 
+      c2c_withdraw_frozen, commission, free_plan, 
+      free, create_time)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{coinId,jdbcType=INTEGER}, 
+      #{recharge,jdbcType=DECIMAL}, #{rechargeWork,jdbcType=DECIMAL}, #{rewardCoin,jdbcType=DECIMAL}, 
+      #{withdraw,jdbcType=DECIMAL}, #{buy,jdbcType=DECIMAL}, #{sell,jdbcType=DECIMAL}, 
+      #{fees,jdbcType=DECIMAL}, #{coinTradeBuy,jdbcType=DECIMAL}, #{coinTradeSell,jdbcType=DECIMAL}, 
+      #{coinTradeFee,jdbcType=DECIMAL}, #{vip6,jdbcType=DECIMAL}, #{pushIn,jdbcType=DECIMAL}, 
+      #{pushOut,jdbcType=DECIMAL}, #{financesCountSend,jdbcType=DECIMAL}, #{withdrawFrozen,jdbcType=DECIMAL}, 
+      #{tradeFrozen,jdbcType=DECIMAL}, #{tradeFrozenCoin,jdbcType=DECIMAL}, #{pushFrozen,jdbcType=DECIMAL}, 
+      #{frozenFinances,jdbcType=DECIMAL}, #{c2cRecharge,jdbcType=DECIMAL}, #{c2cWithdraw,jdbcType=DECIMAL}, 
+      #{c2cWithdrawFrozen,jdbcType=DECIMAL}, #{commission,jdbcType=DECIMAL}, #{freePlan,jdbcType=DECIMAL}, 
+      #{free,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qkwl.common.dto.capital.AssetImbalance" >
+    insert into asset_imbalance
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="coinId != null" >
+        coin_id,
+      </if>
+      <if test="recharge != null" >
+        recharge,
+      </if>
+      <if test="rechargeWork != null" >
+        recharge_work,
+      </if>
+      <if test="rewardCoin != null" >
+        reward_coin,
+      </if>
+      <if test="withdraw != null" >
+        withdraw,
+      </if>
+      <if test="buy != null" >
+        buy,
+      </if>
+      <if test="sell != null" >
+        sell,
+      </if>
+      <if test="fees != null" >
+        fees,
+      </if>
+      <if test="coinTradeBuy != null" >
+        coin_trade_buy,
+      </if>
+      <if test="coinTradeSell != null" >
+        coin_trade_sell,
+      </if>
+      <if test="coinTradeFee != null" >
+        coin_trade_fee,
+      </if>
+      <if test="vip6 != null" >
+        vip6,
+      </if>
+      <if test="pushIn != null" >
+        push_in,
+      </if>
+      <if test="pushOut != null" >
+        push_out,
+      </if>
+      <if test="financesCountSend != null" >
+        finances_count_send,
+      </if>
+      <if test="withdrawFrozen != null" >
+        withdraw_frozen,
+      </if>
+      <if test="tradeFrozen != null" >
+        trade_frozen,
+      </if>
+      <if test="tradeFrozenCoin != null" >
+        trade_frozen_coin,
+      </if>
+      <if test="pushFrozen != null" >
+        push_frozen,
+      </if>
+      <if test="frozenFinances != null" >
+        frozen_finances,
+      </if>
+      <if test="c2cRecharge != null" >
+        c2c_recharge,
+      </if>
+      <if test="c2cWithdraw != null" >
+        c2c_withdraw,
+      </if>
+      <if test="c2cWithdrawFrozen != null" >
+        c2c_withdraw_frozen,
+      </if>
+      <if test="commission != null" >
+        commission,
+      </if>
+      <if test="freePlan != null" >
+        free_plan,
+      </if>
+      <if test="free != null" >
+        free,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="coinId != null" >
+        #{coinId,jdbcType=INTEGER},
+      </if>
+      <if test="recharge != null" >
+        #{recharge,jdbcType=DECIMAL},
+      </if>
+      <if test="rechargeWork != null" >
+        #{rechargeWork,jdbcType=DECIMAL},
+      </if>
+      <if test="rewardCoin != null" >
+        #{rewardCoin,jdbcType=DECIMAL},
+      </if>
+      <if test="withdraw != null" >
+        #{withdraw,jdbcType=DECIMAL},
+      </if>
+      <if test="buy != null" >
+        #{buy,jdbcType=DECIMAL},
+      </if>
+      <if test="sell != null" >
+        #{sell,jdbcType=DECIMAL},
+      </if>
+      <if test="fees != null" >
+        #{fees,jdbcType=DECIMAL},
+      </if>
+      <if test="coinTradeBuy != null" >
+        #{coinTradeBuy,jdbcType=DECIMAL},
+      </if>
+      <if test="coinTradeSell != null" >
+        #{coinTradeSell,jdbcType=DECIMAL},
+      </if>
+      <if test="coinTradeFee != null" >
+        #{coinTradeFee,jdbcType=DECIMAL},
+      </if>
+      <if test="vip6 != null" >
+        #{vip6,jdbcType=DECIMAL},
+      </if>
+      <if test="pushIn != null" >
+        #{pushIn,jdbcType=DECIMAL},
+      </if>
+      <if test="pushOut != null" >
+        #{pushOut,jdbcType=DECIMAL},
+      </if>
+      <if test="financesCountSend != null" >
+        #{financesCountSend,jdbcType=DECIMAL},
+      </if>
+      <if test="withdrawFrozen != null" >
+        #{withdrawFrozen,jdbcType=DECIMAL},
+      </if>
+      <if test="tradeFrozen != null" >
+        #{tradeFrozen,jdbcType=DECIMAL},
+      </if>
+      <if test="tradeFrozenCoin != null" >
+        #{tradeFrozenCoin,jdbcType=DECIMAL},
+      </if>
+      <if test="pushFrozen != null" >
+        #{pushFrozen,jdbcType=DECIMAL},
+      </if>
+      <if test="frozenFinances != null" >
+        #{frozenFinances,jdbcType=DECIMAL},
+      </if>
+      <if test="c2cRecharge != null" >
+        #{c2cRecharge,jdbcType=DECIMAL},
+      </if>
+      <if test="c2cWithdraw != null" >
+        #{c2cWithdraw,jdbcType=DECIMAL},
+      </if>
+      <if test="c2cWithdrawFrozen != null" >
+        #{c2cWithdrawFrozen,jdbcType=DECIMAL},
+      </if>
+      <if test="commission != null" >
+        #{commission,jdbcType=DECIMAL},
+      </if>
+      <if test="freePlan != null" >
+        #{freePlan,jdbcType=DECIMAL},
+      </if>
+      <if test="free != null" >
+        #{free,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qkwl.common.dto.capital.AssetImbalance" >
+    update asset_imbalance
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="coinId != null" >
+        coin_id = #{coinId,jdbcType=INTEGER},
+      </if>
+      <if test="recharge != null" >
+        recharge = #{recharge,jdbcType=DECIMAL},
+      </if>
+      <if test="rechargeWork != null" >
+        recharge_work = #{rechargeWork,jdbcType=DECIMAL},
+      </if>
+      <if test="rewardCoin != null" >
+        reward_coin = #{rewardCoin,jdbcType=DECIMAL},
+      </if>
+      <if test="withdraw != null" >
+        withdraw = #{withdraw,jdbcType=DECIMAL},
+      </if>
+      <if test="buy != null" >
+        buy = #{buy,jdbcType=DECIMAL},
+      </if>
+      <if test="sell != null" >
+        sell = #{sell,jdbcType=DECIMAL},
+      </if>
+      <if test="fees != null" >
+        fees = #{fees,jdbcType=DECIMAL},
+      </if>
+      <if test="coinTradeBuy != null" >
+        coin_trade_buy = #{coinTradeBuy,jdbcType=DECIMAL},
+      </if>
+      <if test="coinTradeSell != null" >
+        coin_trade_sell = #{coinTradeSell,jdbcType=DECIMAL},
+      </if>
+      <if test="coinTradeFee != null" >
+        coin_trade_fee = #{coinTradeFee,jdbcType=DECIMAL},
+      </if>
+      <if test="vip6 != null" >
+        vip6 = #{vip6,jdbcType=DECIMAL},
+      </if>
+      <if test="pushIn != null" >
+        push_in = #{pushIn,jdbcType=DECIMAL},
+      </if>
+      <if test="pushOut != null" >
+        push_out = #{pushOut,jdbcType=DECIMAL},
+      </if>
+      <if test="financesCountSend != null" >
+        finances_count_send = #{financesCountSend,jdbcType=DECIMAL},
+      </if>
+      <if test="withdrawFrozen != null" >
+        withdraw_frozen = #{withdrawFrozen,jdbcType=DECIMAL},
+      </if>
+      <if test="tradeFrozen != null" >
+        trade_frozen = #{tradeFrozen,jdbcType=DECIMAL},
+      </if>
+      <if test="tradeFrozenCoin != null" >
+        trade_frozen_coin = #{tradeFrozenCoin,jdbcType=DECIMAL},
+      </if>
+      <if test="pushFrozen != null" >
+        push_frozen = #{pushFrozen,jdbcType=DECIMAL},
+      </if>
+      <if test="frozenFinances != null" >
+        frozen_finances = #{frozenFinances,jdbcType=DECIMAL},
+      </if>
+      <if test="c2cRecharge != null" >
+        c2c_recharge = #{c2cRecharge,jdbcType=DECIMAL},
+      </if>
+      <if test="c2cWithdraw != null" >
+        c2c_withdraw = #{c2cWithdraw,jdbcType=DECIMAL},
+      </if>
+      <if test="c2cWithdrawFrozen != null" >
+        c2c_withdraw_frozen = #{c2cWithdrawFrozen,jdbcType=DECIMAL},
+      </if>
+      <if test="commission != null" >
+        commission = #{commission,jdbcType=DECIMAL},
+      </if>
+      <if test="freePlan != null" >
+        free_plan = #{freePlan,jdbcType=DECIMAL},
+      </if>
+      <if test="free != null" >
+        free = #{free,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qkwl.common.dto.capital.AssetImbalance" >
+    update asset_imbalance
+    set user_id = #{userId,jdbcType=INTEGER},
+      coin_id = #{coinId,jdbcType=INTEGER},
+      recharge = #{recharge,jdbcType=DECIMAL},
+      recharge_work = #{rechargeWork,jdbcType=DECIMAL},
+      reward_coin = #{rewardCoin,jdbcType=DECIMAL},
+      withdraw = #{withdraw,jdbcType=DECIMAL},
+      buy = #{buy,jdbcType=DECIMAL},
+      sell = #{sell,jdbcType=DECIMAL},
+      fees = #{fees,jdbcType=DECIMAL},
+      coin_trade_buy = #{coinTradeBuy,jdbcType=DECIMAL},
+      coin_trade_sell = #{coinTradeSell,jdbcType=DECIMAL},
+      coin_trade_fee = #{coinTradeFee,jdbcType=DECIMAL},
+      vip6 = #{vip6,jdbcType=DECIMAL},
+      push_in = #{pushIn,jdbcType=DECIMAL},
+      push_out = #{pushOut,jdbcType=DECIMAL},
+      finances_count_send = #{financesCountSend,jdbcType=DECIMAL},
+      withdraw_frozen = #{withdrawFrozen,jdbcType=DECIMAL},
+      trade_frozen = #{tradeFrozen,jdbcType=DECIMAL},
+      trade_frozen_coin = #{tradeFrozenCoin,jdbcType=DECIMAL},
+      push_frozen = #{pushFrozen,jdbcType=DECIMAL},
+      frozen_finances = #{frozenFinances,jdbcType=DECIMAL},
+      c2c_recharge = #{c2cRecharge,jdbcType=DECIMAL},
+      c2c_withdraw = #{c2cWithdraw,jdbcType=DECIMAL},
+      c2c_withdraw_frozen = #{c2cWithdrawFrozen,jdbcType=DECIMAL},
+      commission = #{commission,jdbcType=DECIMAL},
+      free_plan = #{freePlan,jdbcType=DECIMAL},
+      free = #{free,jdbcType=DECIMAL},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

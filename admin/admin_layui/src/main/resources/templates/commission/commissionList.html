@@ -1,0 +1,108 @@
+<div class="layui-form" lay-href="admin/commissionList.html" xmlns:th="http://www.thymeleaf.org"
+     xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+    <div class="layui-form-item layui-search-box">
+    	<div class="layui-inline">
+            <label class="layui-form-label">邀请人ID</label>
+            <div class="layui-input-inline">
+                <input name="inviterId" th:value="${inviterId }" class="layui-input"/>
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">邀请人账号</label>
+            <div class="layui-input-inline">
+                <input name="inviterLoginname" th:value="${inviterLoginname }" class="layui-input"/>
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">被邀请人ID</label>
+            <div class="layui-input-inline">
+                <input name="inviteeId" th:value="${inviteeId }" class="layui-input"/>
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">被邀请人账号</label>
+            <div class="layui-input-inline">
+                <input name="inviteeLoginname" th:value="${inviteeLoginname }" class="layui-input"/>
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">开始时间</label>
+            <div class="layui-input-inline">
+                <input name="startDate" th:value="${startDate }" class="layui-input" onclick="layui.laydate({elem: this})"/>
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">结束时间</label>
+            <div class="layui-input-inline">
+                <input name="endDate" th:value="${endDate }" class="layui-input" onclick="layui.laydate({elem: this})"/>
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">发放状态</label>
+            <div class="layui-input-inline">
+                <select name="status">
+                    <option value="0">全部</option>
+                    <option value="1" th:selected="${status eq 1 ?true:false}">未发放</option>
+                    <option value="2" th:selected="${status eq 2 ?true:false}">已发放</option>
+                    <option value="3" th:selected="${status eq 3 ?true:false}">禁止发放</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-inline">
+            <button class="layui-btn layui-btn-small">查询</button>
+        </div>
+    </div>
+    <hr/>
+    <div class="layui-btn-box">
+    	<div class="layui-btn-group">
+			<button class="layui-btn layui-btn-small" shiro:hasPermission="admin/grantCommission.html"
+					lay-href="commission/grantCommission.html" lay-checked="id" lay-target="ajax" lay-tips="确定要发放吗?">发放佣金</button>
+		</div>
+		<div class="layui-btn-group">
+			<button class="layui-btn layui-btn-small" shiro:hasPermission="admin/forbbinGrant.html"
+					lay-href="commission/forbbinGrant.html" lay-checked="id" lay-target="ajax" lay-tips="确定要禁止吗?">禁止发放</button>
+		</div>
+		<div class="layui-btn-group">
+			<button class="layui-btn layui-btn-small" shiro:hasPermission="admin/relieveForbbin.html"
+					lay-href="commission/relieveForbbin.html" lay-checked="id" lay-target="ajax" lay-tips="确定要解除吗?">解除禁止</button>
+		</div>
+	</div>
+	
+		
+    <div class="layui-conten-box">
+        <table class="layui-table" width="160%">
+            <thead>
+            <tr>
+                <th></th>
+                <th>ID</th>
+                <th>邀请人ID</th>
+                <th>邀请人账号</th>
+                <th>被邀请人ID</th>
+                <th>被邀请人账号</th>
+                <th>返佣金额</th>
+                <th>交易时间</th>
+                <th>委单ID</th>
+                <th>发放标志</th>
+            </tr>
+            </thead>
+            <tbody th:if="${not #lists.isEmpty(commissionList)}">
+            <tr th:each="commission : ${commissionList.data}">
+                <td>
+                    <input type="checkbox" th:name="${commission.id}" lay-skin="primary"/>
+                </td>
+                <td th:text="${commission.id}"></td>
+                <td th:text="${commission.inviterId}"></td>
+                <td th:text="${commission.inviterLoginname}"></td>
+                <td th:text="${commission.inviteeId}"></td>
+                <td th:text="${commission.inviteeLoginname}"></td>
+                <td th:text="${commission.commissionAmount}"></td>
+                <td th:text="${#dates.format(commission.merchandiseTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                <td th:text="${commission.entrustId}"></td>
+                <td th:text="${commission.status == 1? '未发放':(commission.status == 2? '已发放':'禁止发放')}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="layui-laypage-box" th:if="${not #lists.isEmpty(commissionList)}"
+         th:attr="lay-pages=${commissionList.totalPages}, lay-curr=${commissionList.currentPage}"></div>
+</div>

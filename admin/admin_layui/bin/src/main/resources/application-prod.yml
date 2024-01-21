@@ -1,0 +1,37 @@
+redis:
+  host: r-t4n8fea37b5dfd44.redis.singapore.rds.aliyuncs.com
+  port: 6379
+  password: MoXbua9TmsG94qbGS6hq
+  timeout: 5000
+  pool:
+    minIdle: 50
+    maxIdle: 50
+    maxTotal: 200
+    maxWaitMillis: 5000
+    testWhileIdle: true
+    testOnBorrow: true
+    testOnReturn: true
+
+aliyun:
+  mq:
+    accessKey: LTAI5YIotdwRXoNP
+    secretKey: nn6QURHbDVtCLnooPFfU9qetNbq5OP
+    onsAddr: http://ap-southeastaddr-internal.aliyun.com:8080/rocketmq/nsaddr4client-internal
+    topic:
+      entrust_state: SG_HOTCOIN_ENTRUST_STATE
+      user_action: SG_HOTCOIN_USER_ACTION
+      admin_action: SG_HOTCOIN_ADMIN_ACTION
+      validate: SG_HOTCOIN_VALIDATE
+      score: SG_HOTCOIN_SCORE
+    pid:
+      entrustState: PID_SG_HOTCOIN_ENTRUST_STATE
+      validate: PID_SG_HOTCOIN_VALIDATE
+      score: PID_SG_HOTCOIN_SCORE
+      userAction: PID_SG_HOTCOIN_USER_ACTION
+      adminAction: PID_SG_HOTCOIN_ADMIN_ACTION
+    cid:
+      entrustState: CID_SG_HOTCOIN_ENTRUST_STATE
+      validate: CID_SG_HOTCOIN_VALIDATE
+      score: CID_SG_HOTCOIN_SCORE
+      userAction: CID_SG_HOTCOIN_USER_ACTION
+      adminAction: CID_SG_HOTCOIN_ADMIN_ACTION

@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    name:
+    url: jdbc:mysql://drdshgjh513z6e7t.drds.aliyuncs.com:3306/hotcoin?useUnicode=true&characterEncoding=utf-8
+    username: hotcoin
+    password: Tubao502
+    driver-class-name: com.mysql.jdbc.Driver
+    initialSize: 10
+    minIdle: 10
+    maxActive: 50
+    defaultAutoCommit: false
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+
+
+redis:
+  host: r-j6c54a327ff48744.redis.rds.aliyuncs.com
+  port: 6379
+  password: Tubao502
+  timeout: 5000
+  pool:
+    minIdle: 50
+    maxIdle: 50
+    maxTotal: 200
+    maxWaitMillis: 5000
+    testWhileIdle: true
+    testOnBorrow: true
+    testOnReturn: true

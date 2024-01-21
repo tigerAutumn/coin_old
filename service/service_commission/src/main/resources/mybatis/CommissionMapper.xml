@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qkwl.service.commission.dao.CommissionMapper">
+    
+    <select id="selectCommissionByIntroId" resultType="Commission" parameterType="java.lang.Integer">
+        select invitee_loginname, merchandise_time, commission_amount
+        from commission where inviter_id = #{inviterId} order by merchandise_time desc limit 10;
+    </select>
+    
+    <select id="selectAmountByIntroId" resultType="java.math.BigDecimal" parameterType="java.lang.Integer">
+        select sum(commission_amount)
+        from commission where inviter_id = #{inviterId} group by inviter_id;
+    </select>
+    
+    <select id="countCommissionListByParam" resultType="java.lang.Integer" parameterType="java.util.Map">
+        select count(id)
+        from commission where 1=1
+        <if test="inviterId != null">
+            and inviter_id = #{inviterId}
+        </if>
+        <if test="inviteeLoginname != null">
+            and invitee_loginname = #{inviteeLoginname}
+        </if>
+        <if test="merchandiseTime != null">
+            and date_format(merchandise_time,'%Y-%m-%d') = date_format(#{merchandiseTime},'%Y-%m-%d')
+        </if>
+    </select>
+    
+    <select id="getCommissionPageList" resultType="Commission" parameterType="java.util.Map">
+        select invitee_loginname, commission_amount, merchandise_time
+        from commission where 1=1
+        <if test="inviterId != null">
+            and inviter_id = #{inviterId}
+        </if>
+        <if test="inviteeLoginname != null">
+            and invitee_loginname = #{inviteeLoginname}
+        </if>
+        <if test="merchandiseTime != null">
+            and date_format(merchandise_time,'%Y-%m-%d') = date_format(#{merchandiseTime},'%Y-%m-%d')
+        </if>
+        <if test="orderField != null">
+            order by merchandise_time desc
+        </if>
+        limit #{offset},#{limit}
+    </select>
+    
+    <select id="selectIndexRankList" resultType="CommissionRankList" parameterType="java.util.Map">
+        select inviter_loginname, sum(commission_amount) sumCommission
+        from commission where 1=1
+        <if test="startTime != null">
+			<![CDATA[and merchandise_time >= #{startTime}]]>
+		</if>
+		<if test="endTime != null">
+			<![CDATA[and merchandise_time < #{endTime}]]>
+		</if>
+		group by inviter_id order by sum(commission_amount) desc limit 3
+    </select>
+    
+    <select id="selectRankList" resultType="CommissionRankList" parameterType="java.util.Map">
+        select inviter_loginname, sum(commission_amount) sumCommission
+        from commission where 1=1
+        <if test="startTime != null">
+			<![CDATA[and merchandise_time >= #{startTime}]]>
+		</if>
+		<if test="endTime != null">
+			<![CDATA[and merchandise_time < #{endTime}]]>
+		</if>
+		group by inviter_id order by sum(commission_amount) desc limit #{offset}, 10
+    </select>
+    
+    <select id="selectRankCount" resultType="CommissionRankList" parameterType="java.util.Map">
+        select inviter_loginname
+        from commission where 1=1
+        <if test="startTime != null">
+			<![CDATA[and merchandise_time >= #{startTime}]]>
+		</if>
+		<if test="endTime != null">
+			<![CDATA[and merchandise_time < #{endTime}]]>
+		</if>
+		group by inviter_id
+    </select>
+    
+    <insert id="addCommission" parameterType="Commission">
+    INSERT INTO commission(
+      inviter_id,
+      inviter_loginname,
+      invitee_id,
+      invitee_loginname,
+      commission_amount,
+      merchandise_time,
+      entrust_id,
+      status,
+      create_time,
+      update_time
+    )VALUES (
+      #{inviterId},
+      #{inviterLoginname},
+      #{inviteeId},
+      #{inviteeLoginname},
+      #{commissionAmount},
+      #{merchandiseTime},
+      #{entrustId},
+      #{status},
+      #{createTime},
+      #{updateTime}
+    )
+  </insert>
+</mapper>

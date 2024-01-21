@@ -1,0 +1,74 @@
+spring:
+  datasource:
+    name: mydb
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://drdshgjho459v9r0.drds.aliyuncs.com:3306/hotcoin?useUnicode=true&characterEncoding=utf-8
+    username: hotcoin
+    password: ALz2UpVc6VZp11tY
+    driver-class-name: com.mysql.jdbc.Driver
+    initialSize: 10
+    minIdle: 10
+    maxActive: 50
+    defaultAutoCommit: false
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+
+redis:
+  host: r-j6c311e4daee1334.redis.rds.aliyuncs.com
+  port: 6379
+  password: HlvwcDQK5TDzv2Mo
+  timeout: 5000
+  pool:
+    minIdle: 100
+    maxIdle: 100
+    maxTotal: 300
+    maxWaitMillis: 5000
+    testWhileIdle: true
+    testOnBorrow: true
+    testOnReturn: true
+
+mqtt:
+  url: tcp://post-cn-4590re2i204.mqtt.aliyuncs.com
+  port: 1883
+  acessKey: LTAI9aBzu59pCcSd
+  secretKey: TwiWldHgibG2TI5r1UzeyCHHFOAkRp
+  ethTopic: HOTCOIN_HK_TOPIC_ETH_TRADE
+  gsetTopic: HOTCOIN_HK_TOPIC_GSET_TRADE
+  btcTopic: HOTCOIN_HK_TOPIC_BTC_TRADE
+  usdtTopic: HOTCOIN_HK_TOPIC_USDT_TRADE
+  mktTopic: HOTCOIN_HK_TOPIC_MKTINFO
+  webEthTopic: HOTCOIN_HK_WEB_ETH_TRADE
+  webKlineTopic: HOTCOIN_HK_WEB_KLINE
+  webGsetTopic: HOTCOIN_HK_WEB_GSET_TRADE
+  webBtcTopic: HOTCOIN_HK_WEB_BTC_TRADE
+  webUsdtTopic: HOTCOIN_HK_WEB_USDT_TRADE
+  webMktTopic: HOTCOIN_HK_WEB_MKTINFO
+  webRealTimeTrade: HOTCOIN_HK_WEB_REAL_TIME_TRADE
+  clientId: GID_HOTCOIN_HK_TOPIC@@@ClientID_tubao502_hk
+aliyun:
+  mq:
+    accessKey: LTAI9aBzu59pCcSd
+    secretKey: TwiWldHgibG2TI5r1UzeyCHHFOAkRp
+    onsAddr: http://onsaddr-internal.aliyun.com:8080/rocketmq/nsaddr4client-internal
+    topic:
+      entrust_state: SG_HOTCOIN_HK_ENTRUST_STATE
+      user_action: SG_HOTCOIN_HK_USER_ACTION
+      admin_action: SG_HOTCOIN_HK_ADMIN_ACTION
+      validate: SG_HOTCOIN_HK_VALIDATE
+      score: SG_HOTCOIN_HK_SCORE
+    pid:
+      entrustState: PID_SG_HOTCOIN_HK_ENTRUST_STATE
+      validate: PID_SG_HOTCOIN_HK_VALIDATE
+      score: PID_SG_HOTCOIN_HK_SCORE
+      userAction: PID_SG_HOTCOIN_HK_USER_ACTION
+      adminAction: PID_SG_HOTCOIN_HK_ADMIN_ACTION
+    cid:
+      entrustState: CID_SG_HOTCOIN_HK_ENTRUST_STATE
+      validate: CID_SG_HOTCOIN_HK_VALIDATE
+      score: CID_SG_HOTCOIN_HK_SCORE
+      userAction: CID_SG_HOTCOIN_HK_USER_ACTION
+      adminAction: CID_SG_HOTCOIN_HK_ADMIN_ACTION

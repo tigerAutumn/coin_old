@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:hsf="http://www.taobao.com/hsf" xmlns="http://www.springframework.org/schema/beans"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.taobao.com/hsf
+       http://www.taobao.com/hsf/hsf.xsd"
+	   default-autowire="byName">
+
+	<hsf:consumer id="entrustServerConsumer" interface="com.qkwl.common.rpc.entrust.IEntrustServer"
+				  version="1.0" group="entrust">
+		<hsf:methodSpecials>
+			<hsf:methodSpecial name="listEntrust" timeout="20000"/>
+			<hsf:methodSpecial name="listEntrustHistory" timeout="20000"/>
+		</hsf:methodSpecials>
+	</hsf:consumer>
+
+	<hsf:consumer id="userWalletServiceConsumer" interface="com.qkwl.common.rpc.capital.IUserWalletService"
+				  version="1.0" group="capital">
+	</hsf:consumer>
+	
+	<hsf:consumer id="pushServiceConsumer" interface="com.qkwl.common.rpc.push.PushService"
+				  version="1.0" group="push">
+	</hsf:consumer>
+	
+	<hsf:consumer id="userServiceConsumer" interface="com.qkwl.common.rpc.user.IUserService"
+				  version="1.0" group="user">
+	</hsf:consumer>
+	
+	<hsf:consumer id="entrustHistoryServiceConsumer" interface="com.qkwl.common.rpc.entrust.EntrustHistoryService"
+				  version="1.0" group="entrustHitory">
+	</hsf:consumer>
+</beans>

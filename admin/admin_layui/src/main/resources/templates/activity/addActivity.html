@@ -1,0 +1,20 @@
+<div xmlns:th="http://www.thymeleaf.org" class="layui-form layui-form-pane" lay-href="admin/saveActivity.html">
+    <div class="layui-form-item">
+        <label class="layui-form-label">活动名称：</label>
+        <div class="layui-input-block">
+            <input class="layui-input" name="activityName" lay-verify="required" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">开始时间：</label>
+        <div class="layui-input-block">
+        	<input name="startTime" class="layui-input" lay-verify="required" onclick="layui.laydate({elem: this})"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">结束时间：</label>
+        <div class="layui-input-block">
+            <input name="endTime" class="layui-input" lay-verify="required" onclick="layui.laydate({elem: this})"/>
+        </div>
+    </div>
+</div>

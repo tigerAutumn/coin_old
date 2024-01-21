@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qkwl.service.admin.bc.dao.ActivityConfigMapper">
+
+	<select id="countActivityListByParam" resultType="java.lang.Integer" parameterType="java.util.Map">
+        select count(id)
+        from activity_config where 1=1
+        <if test="status == 1">
+            <![CDATA[
+			and start_time > NOW()
+		]]>
+        </if>
+        <if test="status == 2">
+            <![CDATA[
+			and start_time <= NOW() and end_time >= NOW()
+		]]>
+        </if>
+        <if test="status == 3">
+            <![CDATA[
+			and end_time < NOW()
+		]]>
+        </if>
+    </select>
+    
+    <select id="getActivityPageList" resultType="ActivityConfig" parameterType="java.util.Map">
+        select *
+        from activity_config where 1=1
+        <if test="status == 1">
+            <![CDATA[
+			and start_time > NOW()
+		]]>
+        </if>
+        <if test="status == 2">
+            <![CDATA[
+			and start_time <= NOW() and end_time >= NOW()
+		]]>
+        </if>
+        <if test="status == 3">
+            <![CDATA[
+			and end_time < NOW()
+		]]>
+        </if>
+        <if test="orderField != null">
+            order by ${orderField} ${orderDirection}
+        </if>
+        limit #{offset},#{limit}
+    </select>
+    
+    <select id="getActivityById" resultType="ActivityConfig" parameterType="java.lang.Integer">
+        select *
+        from activity_config where id = #{id}
+    </select>
+    
+    <insert id="insertActivity" parameterType="ActivityConfig">
+        INSERT INTO activity_config (
+        activity_name,
+        start_time,
+        end_time,
+        update_time)
+        VALUES (
+        #{activityName},
+		#{startTime},
+		#{endTime},
+		NOW())
+    </insert>
+    
+    <delete id="deleteActivity" parameterType="ActivityConfig">
+    DELETE FROM activity_config WHERE id = #{id}
+  </delete>
+  
+  <update id="updateActivity" parameterType="ActivityConfig">
+    update activity_config
+    set 
+      	activity_name = #{activityName},
+      	start_time = #{startTime},
+      	end_time = #{endTime},
+      	update_time = NOW()
+    where 
+    	id = #{id}
+  </update>
+</mapper>

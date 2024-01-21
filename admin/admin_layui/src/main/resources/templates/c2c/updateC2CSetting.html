@@ -1,0 +1,24 @@
+<div class="layui-form layui-form-pane" xmlns:th="http://www.thymeleaf.org" lay-href="admin/c2c/updateC2CFunctionSetting.html">
+	<input type="hidden" name="id" th:value="${c2cSetting.id}"/>
+	<div class="layui-form-item">
+        <label class="layui-form-label">key：</label>
+        <div class="layui-input-block">
+			<p class="layui-input" th:text="${c2cSetting.key}" ></p>
+        </div>
+    </div> 
+    <div class="layui-form-item">
+        <label class="layui-form-label">参数值：</label>
+        <div class="layui-input-block">
+            <input class="layui-input" name="value" lay-verify="required" th:value="${c2cSetting.value}" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">描述：</label>
+       <div class="layui-input-block">
+			<p class="layui-input" th:text="${c2cSetting.description}" ></p>
+        </div>
+    </div>
+</div>
+<script type="application/javascript">
+  
+</script>

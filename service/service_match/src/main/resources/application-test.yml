@@ -1,0 +1,67 @@
+spring:
+  datasource:
+    name:
+    url: jdbc:mysql://drdshgjh513z6e7t.drds.aliyuncs.com:3306/hotcoin?useUnicode=true&characterEncoding=utf-8
+    username: hotcoin
+    password: Tubao502
+    driver-class-name: com.mysql.jdbc.Driver
+    initialSize: 10
+    minIdle: 10
+    maxActive: 50
+    defaultAutoCommit: false
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+
+
+redis:
+  host: r-j6c54a327ff48744.redis.rds.aliyuncs.com
+  port: 6379
+  password: Tubao502
+  timeout: 5000
+  pool:
+    minIdle: 50
+    maxIdle: 50
+    maxTotal: 200
+    maxWaitMillis: 5000
+    testWhileIdle: true
+    testOnBorrow: true
+    testOnReturn: true
+
+aliyun:
+  mq:
+    accessKey: LTAIzoYYkzbQkNX4
+    secretKey: 8a0C6XRa9vOdVuPjCkPXc8eyjtSSDS
+    onsAddr: http://onsaddr-internet.aliyun.com/rocketmq/nsaddr4client-internet
+    topic:
+      entrust_state: SG_HOTCOIN_ENTRUST_STATE_TEST_1
+      user_action: SG_HOTCOIN_USER_ACTION_TEST_1
+      admin_action: SG_HOTCOIN_ADMIN_ACTION_TEST_1
+      validate: SG_HOTCOIN_VALIDATE_TEST_1
+      score: SG_HOTCOIN_SCORE_TEST_1
+      c2cEntrustStatus: SG_HOTCOIN_C2C_STATUS_TEST_1
+      commission: SG_HOTCOIN_COMMISSION_TEST_1
+    pid:
+      entrustState: PID_SG_HOTCOIN_ENTRUST_STATE_TEST_1
+      validate: PID_SG_HOTCOIN_VALIDATE_TEST_1
+      score: PID_SG_HOTCOIN_SCORE_TEST_1
+      userAction: PID_SG_HOTCOIN_USER_ACTION_TEST_1
+      adminAction: PID_SG_HOTCOIN_ADMIN_ACTION_TEST_1
+      c2cEntrustStatus: PID_SG_HOTCOIN_C2C_STATUS_TEST_1
+      commission: PID_HOTCOIN_COMMISSION_TEST_1
+    cid:
+      entrustState: CID_SG_HOTCOIN_ENTRUST_STATE_TEST_1
+      validate: CID_SG_HOTCOIN_VALIDATE_TEST_1
+      score: CID_SG_HOTCOIN_SCORE_TEST_1
+      userAction: CID_SG_HOTCOIN_USER_ACTION_TEST_1
+      adminAction: CID_SG_HOTCOIN_ADMIN_ACTION_TEST_1
+      c2cEntrustStatus: CID_SG_HOTCOIN_C2C_STATUS_TEST_1
+      commission: CID_HOTCOIN_COMMISSION_TEST_1
+
+ossConstant:
+   accessId: LTAIzoYYkzbQkNX4
+   accessKey: 8a0C6XRa9vOdVuPjCkPXc8eyjtSSDS
+   ossEndpoint: oss-ap-southeast-1-internal.aliyuncs.com

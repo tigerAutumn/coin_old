@@ -1,0 +1,151 @@
+@charset "utf-8";
+
+.container {
+	position: relative;
+}
+/*header*/
+.dowload {
+	height: 788px;
+	background: #23262a url("../../images/dowload/dowload-bg.jpg") no-repeat 50% 50%;
+}
+
+.dowload .nav>li>a {
+	font-size: 14px;
+	padding-left: 15px;
+	color: #ffffff;
+}
+
+.dowload .nav>li>a:hover {
+	color: #c83935;
+}
+
+.dowload .nav-pills>li.active>a,.nav-pills>li.active>a:hover,.nav-pills>li.active>a:focus {
+	color: #c83935;
+}
+
+.header .header-nav {
+	border-top: none;
+	padding-top: 20px;
+	font-size: 1.2em;
+}
+
+.dowload .navbar-nav .split {
+	position: absolute;
+	right: 0;
+	top: 15px;
+}
+
+.dowload .logo img {
+	height: 100%;
+}
+
+.dowload .nav>li>a:hover,.header.nav>li>a:focus {
+	background: transparent;
+	color: #ec140a;
+}
+
+.download-bottom {
+	height: 132px;
+	background: #fff url("../../images/dowload/dowload-bottom.jpg") no-repeat 50% 50%;
+}
+
+.dowload .dcenter {
+	position: absolute;
+	top: 260px;
+	left: 0;
+}
+
+.dcenter .android {
+	width: 268px;
+	height: 268px;
+	margin-right: 35px;
+	float: left;
+}
+
+.dcenter .android img {
+	width: 268px;
+	height: 268px;
+}
+
+.dcenter .android a {
+	display: block;
+	height: 80px;
+	line-height: 80px;
+	border-top: 4px solid #d63731;
+	color: #fff;
+	font-size: 26px;
+	text-align: center;
+	background: #0e0e0e;
+}
+
+.dcenter .android a:hover {
+	color: #fff;
+	border-left: 1px solid #d63731;
+	border-right: 1px solid #d63731;
+	border-bottom: 1px solid #d63731;
+	text-decoration: none;
+}
+.dcenter .ios {
+	width: 268px;
+	height: 268px;
+	float: left;
+}
+.dcenter .ios img {
+	width: 268px;
+	height: 268px;
+}
+.dcenter .ios .top {
+	width: 268px;
+	height: 268px;
+	padding: 12px;
+	border-top: 1px solid #792527;
+	border-left: 1px solid #792527;
+	border-right: 1px solid #792527;
+}
+.ios .top .tips1{
+	color: #fff;
+	font-size: 14px;
+	line-height: 2em;
+	display: block;
+}
+.ios .top .tips2{
+	color: #fff;
+	font-size: 18px;
+	line-height: 2em;
+	display: block;
+	padding-top: 20px;
+}
+.ios .top .tips3{
+	color: #e0322a;
+	font-size: 26px;
+	line-height: 2em;
+	display: block;
+	padding-top: 20px;
+	border-bottom: 1px solid #792527;
+}
+.ios .top .tips3 a{
+	color: #e0322a;
+	font-size: 26px;
+}
+.ios .top .tips3 a:hover{
+	color: #e0322a;
+	font-size: 26px;
+	text-decoration: none;
+}
+.dcenter .ios a.down {
+	height: 80px;
+	line-height: 80px;
+	border-top: 4px solid #792527;
+	color: #fff;
+	font-size: 26px;
+	text-align: center;
+	background: #0e0e0e;
+	display: block;
+}
+.dcenter .ios a.down:hover {
+	color: #fff;
+	border-left: 1px solid #792527;
+	border-right: 1px solid #792527;
+	border-bottom: 1px solid #792527;
+	text-decoration: none;
+}

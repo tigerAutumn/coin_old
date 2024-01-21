@@ -1,0 +1,32 @@
+<div class="layui-form" lay-href="/prompt/promptList.html" xmlns:th="http://www.thymeleaf.org"
+     xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+     <div class="layui-form-item layui-search-box" style="display: none">
+        <div class="layui-inline">
+            <button class="layui-btn layui-btn-small"></button>
+        </div>
+    </div>
+    <hr />
+    <div class="layui-btn-box">
+        <button class="layui-btn layui-btn-small" shiro:hasPermission="prompt/startUpdate.html"
+                lay-href="prompt/updatePrompt.html"
+                lay-target="dialog" lay-height="670" lay-width="800">修改</button>
+    </div>
+    <div class="layui-conten-box">
+        <table class="layui-table" width="100%">
+            <thead>
+            <tr>
+                <th>是否正在升级</th>
+                <th>开始时间</th>
+                <th>结束时间</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr >
+                <td th:text="${isUpdating}"></td>
+                <td th:text="${startTime}"></td>
+                <td th:text="${endTime}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+redis:
+  host: r-j6c311e4daee1334.redis.rds.aliyuncs.com
+  port: 6379
+  password: HlvwcDQK5TDzv2Mo
+  timeout: 5000
+  pool:
+    minIdle: 50
+    maxIdle: 50
+    maxTotal: 200
+    maxWaitMillis: 5000
+    testWhileIdle: true
+    testOnBorrow: true
+    testOnReturn: true
+    
+mqtt: 
+  ethTopic: HOTCOIN_HK_TOPIC_ETH_TRADE
+  gsetTopic: HOTCOIN_HK_TOPIC_GSET_TRADE
+  btcTopic: HOTCOIN_HK_TOPIC_BTC_TRADE
+  usdtTopic: HOTCOIN_HK_TOPIC_USDT_TRADE
+
+aliyun:
+  mq:
+    accessKey: LTAI9aBzu59pCcSd
+    secretKey: TwiWldHgibG2TI5r1UzeyCHHFOAkRp
+    onsAddr: http://onsaddr-internal.aliyun.com:8080/rocketmq/nsaddr4client-internal
+    topic:
+      entrust_state: SG_HOTCOIN_HK_ENTRUST_STATE
+      user_action: SG_HOTCOIN_HK_USER_ACTION
+      admin_action: SG_HOTCOIN_HK_ADMIN_ACTION
+      validate: SG_HOTCOIN_HK_VALIDATE
+      score: SG_HOTCOIN_HK_SCORE
+    pid:
+      entrustState: PID_SG_HOTCOIN_HK_ENTRUST_STATE
+      validate: PID_SG_HOTCOIN_HK_VALIDATE
+      score: PID_SG_HOTCOIN_HK_SCORE
+      userAction: PID_SG_HOTCOIN_HK_USER_ACTION
+      adminAction: PID_SG_HOTCOIN_HK_ADMIN_ACTION
+    cid:
+      entrustState: CID_SG_HOTCOIN_HK_ENTRUST_STATE
+      validate: CID_SG_HOTCOIN_HK_VALIDATE
+      score: CID_SG_HOTCOIN_HK_SCORE
+      userAction: CID_SG_HOTCOIN_HK_USER_ACTION
+      adminAction: CID_SG_HOTCOIN_HK_ADMIN_ACTION
+      
+ossConstant:
+  bucketBase: hotcoin-hk-static
+  accessKey: LTAI9aBzu59pCcSd
+  secretKey: TwiWldHgibG2TI5r1UzeyCHHFOAkRp
+  ossEndpoint: http://oss-cn-hongkong.aliyuncs.com
+  bucketValidate: hotcoin-hk-idcard
+     
+faceid:  
+  token_url: https://api.megvii.com/faceid/lite/get_token
+  result_url: https://api.megvii.com/faceid/lite/get_result
+  api_key: mU7omy9gZuRws9ckNlzkxBK5z3wWqS_N
+  api_secret: XWe7vcC06ESn9am1suz31XvQ-ZeGvnPA
+  return_url: https://hkweb.hotcoin.top/v2/returnUrl.html
+  notify_url: https://hkweb.hotcoin.top/v2/notifyValidate.html
+  comparison_type: 1
+  idcard_mode: 2   
+  web_title: 热币网实名认证

@@ -1,0 +1,767 @@
+@charset "utf-8";
+
+.recharge .recharge-type {
+	display: inline-block;
+	width: 160px;
+	height: 45px;
+	float: left;
+}
+
+.recharge .addtips {
+	position: absolute;
+	top: 7px;
+	right: -50px;
+}
+
+.recharge .recharge-type.alipay {
+	background: url("../../images/finance/financeplist.png") no-repeat 0 -68px;
+}
+
+.recharge .recharge-type.bank {
+	background: url("../../images/finance/financeplist.png") no-repeat -162px -68px;
+}
+.recharge .recharge-type.speed-bank{
+	background: url("../../images/finance/financeplist.png") no-repeat -712px -68px;
+}
+
+.recharge .recharge-type.onlinebank {
+	width: 185px;
+	background: url("../../images/finance/financeplist.png") no-repeat -490px -68px;
+}
+
+.recharge .recharge-type.wechat {
+	background: url("../../images/finance/financeplist.png") no-repeat -325px -68px;
+}
+
+.recharge .recharge-type.active, .recharge .recharge-type:hover {
+	background-position-y: 0;
+}
+
+.recharge .recharge-box {
+	background: #f9f9f9;
+	padding: 30px 40px;
+}
+
+.recharge .recharge-process {
+	height: 35px;
+	border-bottom: 3px solid #f1f0f0;
+	display: block;
+	margin-bottom: 30px;
+	font-size: 14px;
+}
+
+.recharge .recharge-process > span {
+	height: 35px;
+	text-align: center;
+}
+
+.recharge .recharge-process-icon {
+	border: 1px solid #b5b4b4;
+	width: 20px;
+	height: 20px;
+	border-radius: 20px;
+	text-align: center;
+	color: #b5b4b4;
+	display: inline-block;
+	font-size: 12px;
+}
+
+.recharge .recharge-process-text {
+	color: #b5b4b4;
+}
+
+.recharge .recharge-process .active {
+	border-bottom: 3px solid #ffad01;
+}
+
+.recharge .recharge-process .active .recharge-process-icon {
+	border: 1px solid #ffad01;
+	color: #ffad01;
+}
+
+.recharge .recharge-process .active .recharge-process-text {
+	color: #ffad01;
+}
+
+.recharge .randomtips {
+	position: absolute;
+	top: 0;
+	right: -10px;
+	color: #e80f1d;
+}
+
+.recharge .recharge-help {
+	background: url("../../images/finance/financeplist.png") no-repeat 0 -120px;
+	width: 270px;
+	padding-top: 110px;
+	padding-bottom: 40px;
+	display: inline-block;
+}
+
+.recharge .recharge-infobox {
+	background: url("../../images/finance/recharge_2.png") no-repeat;
+	background-size: 100% 100%;
+	padding: 30px 50px;
+}
+
+.recharge .rechage-tips {
+	background: #fdfaf3;
+	line-height: 30px;
+	display: block;
+	padding: 0 12px;
+	margin-bottom: 20px;
+	border: 1px solid #fff0e4;
+	border-top-color: #fdfaf3;
+}
+
+.recharge .rechage-tips .icon {
+	background: url("../../images/finance/financeplist.png") no-repeat 0 -550px;
+	width: 60px;
+	height: 18px;
+	display: inline-block;
+	vertical-align: middle;
+	float: left;
+}
+
+.recharge .rechare-success {
+	padding: 30px;
+	display: block;
+	background: #fff;
+}
+
+.recharge .rechare-success .success-icon {
+	background: url("../../images/finance/financeplist.png") no-repeat 0 -300px;
+	line-height: 40px;
+	font-size: 24px;
+	color: #009900;
+	padding-left: 50px;
+	display: inline-block;
+	margin-bottom: 15px;
+}
+
+.recharge .rechare-success a {
+	color: #009900;
+	padding-left: 50px;
+}
+
+.recharge .recharge-qrcodetext {
+	font-size: 14px;
+	line-height: 47px;
+	color: #fff;
+}
+
+.recharge .recharge-qrcodecon {
+	font-size: 14px;
+	line-height: 45px;
+	height: 45px;
+}
+
+.recharge .recharge-qrcodecon.address {
+	border: 1px solid #e6e5e5;
+}
+
+.recharge .recharge-qrcodecon button {
+	width: 280px;
+	margin: 8px 0;
+	float: left;
+	display: inline;
+}
+
+.recharge .recharge-qrcodecon .code-txt {
+	font-size: 14px;
+	font-weight: bold;
+	color: white;
+}
+
+.recharge .recharge-qrcodecon .code-box {
+	width: 21px;
+	height: 21px;
+	float: right;
+	background: url("../../images/finance/qrcode.png") no-repeat;
+	margin: 11px 0;
+	display: inline;
+	cursor: pointer;
+	position: relative;
+	z-index: 100;
+}
+
+.recharge .recharge-qrcodecon .code-box .qrcode {
+	width: 180px;
+	height: 165px;
+	position: absolute;
+	top: -70px;
+	left: 39px;
+	display: none;
+	background: url("../../images/finance/financeplist.png") no-repeat -410px -1531px;
+	padding: 10px 10px 10px 20px;
+}
+
+.recharge .recharge-qrcodecon .code-box:hover .qrcode {
+	display: block;
+}
+
+/*************banklist****************/
+.recharge .bank-item {
+	width: 126px;
+	height: 50px;
+	display: inline-block;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	cursor: pointer;
+	position: relative;
+	border: #f1f1f0 1px solid;
+}
+
+.recharge .bank-item:hover .bank-item-checked {
+	display: block;
+}
+
+.recharge .bank-item .bank-item-checked {
+	border: #f7b895 solid 1px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 126px;
+	height: 50px;
+	display: none;
+	background: url("../../images/finance/financeplist.png") no-repeat 97px -1660px;
+}
+
+.recharge .bank-nbcb {
+	background: url("../../images/finance/bankicon/nbcb.gif") no-repeat center center;
+}
+
+.recharge .bank-bea {
+	background: url("../../images/finance/bankicon/bea.gif") no-repeat center center;
+}
+
+.recharge .bank-cib {
+	background: url("../../images/finance/bankicon/cib.gif") no-repeat center center;
+}
+
+.recharge .bank-shb {
+	background: url("../../images/finance/bankicon/shb.gif") no-repeat center center;
+}
+
+.recharge .bank-psbc {
+	background: url("../../images/finance/bankicon/psbc.gif") no-repeat center center;
+}
+
+.recharge .bank-pab {
+	background: url("../../images/finance/bankicon/pab.gif") no-repeat center center;
+}
+
+.recharge .bank-bjb {
+	background: url("../../images/finance/bankicon/bjb.gif") no-repeat center center;
+}
+
+.recharge .bank-cncb {
+	background: url("../../images/finance/bankicon/cncb.gif") no-repeat center center;
+}
+
+.recharge .bank-cgb {
+	background: url("../../images/finance/bankicon/cgb.gif") no-repeat center center;
+}
+
+.recharge .bank-spdb {
+	background: url("../../images/finance/bankicon/spdb.gif") no-repeat center center;
+}
+
+.recharge .bank-cmsb {
+	background: url("../../images/finance/bankicon/cmsb.gif") no-repeat center center;
+}
+
+.recharge .bank-hxb {
+	background: url("../../images/finance/bankicon/hxb.gif") no-repeat center center;
+}
+
+.recharge .bank-ceb {
+	background: url("../../images/finance/bankicon/ceb.gif") no-repeat center center;
+}
+
+.recharge .bank-cmb {
+	background: url("../../images/finance/bankicon/cmb.gif") no-repeat center center;
+}
+
+.recharge .bank-comm {
+	background: url("../../images/finance/bankicon/comm.gif") no-repeat center center;
+}
+
+.recharge .bank-ccb {
+	background: url("../../images/finance/bankicon/ccb.gif") no-repeat center center;
+}
+
+.recharge .bank-boc {
+	background: url("../../images/finance/bankicon/boc.gif") no-repeat center center;
+}
+
+.recharge .bank-abc {
+	background: url("../../images/finance/bankicon/abc.gif") no-repeat center center;
+}
+
+.recharge .bank-icbc {
+	background: url("../../images/finance/bankicon/icbc.gif") no-repeat center center;
+}
+
+.recharge .recharge-online {
+	width: 287px;
+	display: inline-block;
+}
+
+.recharge .recharge-online-success {
+	background: url("../../images/comm/success.jpg") no-repeat 0 0;
+	width: 287px;
+	height: 210px;
+	display: inline-block;
+	position: relative;
+}
+
+.recharge .recharge-online-success.failure {
+	background: url("../../images/comm/failure.jpg") no-repeat 0 0;
+	width: 287px;
+	height: 210px;
+	display: inline-block;
+	position: relative;
+}
+
+.recharge-online-text {
+	display: inline-block;
+	font-size: 22px;
+	color: #359e7d;
+	position: absolute;
+	left: 0;
+	bottom: 35px;
+	width: 100%;
+	text-align: center;
+}
+
+.recharge-online-text.failure {
+	color: #ff4f4e;
+}
+
+.recharge-dialog {
+	height: 200px;
+	padding: 24px 0;
+}
+
+.recharge-dialog .wechatqrcode {
+	width: 152px;
+	height: 152px;
+	border: 3px solid #f9f5eb;
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 0;
+}
+
+.recharge-dialog .title {
+	color: #666666;
+	font-size: 16px;
+	font-weight: bold;
+	height: 40px;
+	float: left;
+}
+
+.recharge-dialog .content {
+	background: #f8f7f6;
+	height: 112px;
+	font-size: 14px;
+	color: #333333;
+	line-height: 20px;
+	float: left;
+	padding: 11px 20px;
+	width: 100%;
+}
+
+.recharge-dialog .content > span {
+	display: block;
+	height: 30px;
+}
+
+.recharge .orange {
+	color: #ec691e;
+}
+
+.recharge .agency-con-box {
+	background: #fff;
+	padding-bottom: 40px !important;
+}
+
+.recharge .agency-box {
+	list-style: none;
+	font-size: 14px;
+	padding: 0 0 0 28px;
+}
+
+.recharge .agency-box li {
+	width: 204px;
+	height: 72px;
+	float: left;
+	cursor: pointer;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: -1px 0 0 0;
+}
+
+.recharge .agency-box li a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #333333;
+	text-decoration: none;
+}
+
+.recharge .agency-box li a:hover {
+	color: #ea6b1e;
+}
+
+.recharge .splin-line-box {
+	width: 100%;
+	height: 72px;
+	border: 1px solid #f1f1f1;
+	border-right: none;
+	border-left: none;
+	margin-top: -1px;
+}
+
+.recharge .agency-box li.agency-split {
+	height: 72px;
+	width: 1px;
+	float: left;
+	border-right: 1px solid #f1f1f1;
+}
+
+.recharge .agency-box li.agency-startOrEnd {
+	height: 72px;
+	width: 26px;
+	float: left;
+	border-right: none;
+}
+
+.recharge .agency-box .agency-dtail-left {
+}
+
+.recharge .agency-box .agency-dtail-right {
+	padding-left: 6px;
+	text-align: left;
+}
+
+.recharge .agency-box .agency-dtail-right p {
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+}
+
+.recharge .agency-box .agency-dtail-right p.title {
+	font-weight: 600;
+}
+
+.recharge .agency-rec-box {
+	text-align: center;
+}
+
+.rechage-agency-box {
+	padding-left: 100px !important;
+}
+
+.recharge .exchange-info {
+	width: 616px;
+	padding: 20px 55px;
+	display: inline-block;
+	background: #f9f9f9;
+}
+
+.recharge .exchange-info input {
+	width: 350px;
+	height: 35px;
+	margin: 0;
+	color: black;
+	padding-left: 10px;
+	line-height: 35px;
+	float: left;
+	border: 1px solid #f1f0f0;
+}
+
+.recharge .exchange-info button {
+	background-color: #da2e22;
+	border: none;
+	width: 150px;
+	height: 35px;
+	border-radius: 0;
+	font-size: 14px;
+	float: left;
+}
+
+.sbank-chose {
+	padding: 6px 12px;
+	border: 1px solid #cccccc;
+	cursor: pointer;
+	position: relative;
+	margin-bottom: 5px;
+}
+
+.sbank-chose.chose, .sbank-chose:hover {
+	border: 1px solid #ec691e;
+}
+
+.sbank-chose.chose i {
+	width: 28px;
+	height: 23px;
+	background: url("../../images/finance/financeplist.png") no-repeat 0 -1686px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+#orderInfo .form-group {
+	margin-bottom: 0;
+}
+
+#orderInfo .form-group div {
+	border-bottom: 1px solid #e8e7e7;
+	height: 42px;
+	padding: 5px 15px;
+}
+
+#orderInfo .form-group div.top {
+	border-top: 1px solid #e8e7e7;
+}
+
+#orderInfo .form-group div:first-child {
+	border-right: 1px solid #e8e7e7;
+}
+
+#orderInfo .btn-group {
+	margin-top: 15px;
+	width: 100%;
+}
+
+#orderInfo .group-tips {
+	display: inline-block;
+	width: initial;
+}
+
+.recharge-online .recharge-title {
+	background: url("../../images/finance/recharge-title.png") no-repeat;
+	padding-top: 40px;
+	padding-left: 97px;
+	padding-bottom: 38px;
+}
+
+.recharge-online .recharge-title span {
+	width: 190px;
+	text-align: center;
+	font-size: 12px;
+	color: #999999;
+	display: inline-block;
+}
+
+.recharge-online .addBankInfo{
+	color:#646464;
+}
+
+.recharge-online .online-box {
+	position: relative;
+}
+
+.recharge-online .online-step-1 {
+	position: absolute;
+	top: 170px;
+	left: 0;
+	width: 100%;
+	background: rgba(255, 255, 255, 1);
+	z-index: 100;
+	height: 300px;
+}
+
+.recharge-online .online-step-1 .online-tips {
+	padding-left: 150px;
+}
+
+.recharge-online .online-step-1 i {
+	width: 74px;
+	height: 49px;
+	display: inline-block;
+	background: url("../../images/finance/recharge-icon.png") no-repeat;
+	margin: 33px 0;
+}
+
+.recharge-online .online-step-1 span {
+	color: #333;
+	font-size: 14px;
+}
+
+.recharge-online .online-step-1 span.red {
+	color: #da2e22;
+}
+
+.recharge-online .online-step-1 button {
+	width: 170px;
+	margin: 20px 10px;
+	height: 34px;
+	color: #fff;
+}
+
+.recharge-online .online-step-1 button span {
+	padding: 0 10px;
+	color: #fff;
+}
+
+.recharge-online .online-step-2 {
+	padding-right: 50px !important;
+}
+
+.recharge-online .online-step-2 .form-group {
+	margin: 0;
+	border-bottom: 1px solid #e8e3e3;
+}
+
+.recharge-online .online-step-2 .form-group:first-child {
+	border-top: 1px solid #e8e3e3;
+}
+
+.recharge-online .online-step-2 .form-group span {
+	padding: 0 10px;
+	height: 45px;
+	display: flex;
+	align-items: center;
+}
+
+.recharge-online .online-step-2 .form-group span:first-child {
+	border-right: 1px solid #e8e3e3;
+	text-align: right;
+	color: #606060;
+}
+
+.recharge-online .online-step-2 .form-group span:last-child {
+	color: #da2e22;
+}
+
+.recharge-online .online-step-3 {
+	position: absolute;
+	top: 170px;
+	left: 0;
+	width: 100%;
+	background: rgba(255, 255, 255, 1);
+	z-index: 100;
+	min-height: 300px;
+	display: none;
+}
+
+.recharge-online .online-step-3 p.title{
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+	font-size: 18px;
+	color: #000;
+	margin: 0;
+	text-align: center;
+}
+
+.recharge-online .online-step-3 .bankinfo-list{
+	list-style: none;
+	width: 100%;
+	height: auto;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	font-size: 14px;
+	flex-direction: column;
+	padding-left: 300px;
+	min-height: 128px;
+}
+
+.recharge-online .online-step-3 .bankinfo-list label{
+	display: flex;
+}
+
+.recharge-online .online-step-3 .bankinfo-list label input{
+	margin-right: 6px;
+}
+
+.recharge-online .online-step-3 button{
+	width: 170px;
+	margin: 20px 10px;
+	height: 34px;
+	color: #fff;
+}
+
+#selectBankInfo{
+	margin: 0 6px;
+}
+
+.recharge-online .btn-copy{
+	width: 14px;
+	height: 15px;
+	background: url("../../images/finance/copy-btn.png") no-repeat 50% 50%;
+	display: flex;
+	cursor: pointer;
+}
+
+.recharge-online .warning-hint{
+	background-color: #f3f3f3;
+	margin: 0 0 38px 0;
+}
+
+.recharge-online .warning-hint p{
+	width: 100%;
+	color: #f00;
+	margin: 8px 0;
+	font-size: 16px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.recharge-online .warning-icon{
+	width: 14px;
+	height: 13px;
+	background: url("../../images/finance/warning-icon.png") no-repeat 50% 50%;
+	display: flex;
+	cursor: pointer;
+	margin: 0 3px;
+}
+.rechage-gxs .form-group{
+	margin-bottom: 0;
+	height: 40px;
+	line-height: 40px;
+}
+.rechage-gxs .form-group p{
+	font-size: 14px;
+	color: #646464;
+}
+.rechage-gxs .form-group span:first-child{
+	font-size: 14px;
+	color: #646464;
+	text-align: right;
+	border-bottom: 1px solid #e4e3e3;
+	border-right: 1px solid #e4e3e3;
+}
+.rechage-gxs .form-group span:last-child{
+	font-size: 14px;
+	color: #333333;
+	font-weight: bold;
+	text-align: left;
+	border-bottom: 1px solid #e4e3e3;
+}
+.rechage-gxs .form-group span.top{
+	border-top: 1px solid #e4e3e3;
+}
+
+.link-box{
+	display: flex;
+	width: 100%;
+	height: 31px;
+	padding: 6px 12px;
+	font-size: 12px;
+	line-height: 1.42857143;
+}
+
+.link-box .icon-qq{
+	width: 17px;
+	height: 20px;
+	margin-right: 6px;
+	background: url("../../images/finance/qq.png") no-repeat;
+	display: flex;
+}

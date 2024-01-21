@@ -1,0 +1,60 @@
+<div class="layui-form" lay-href="admin/activityList.html" xmlns:th="http://www.thymeleaf.org"
+     xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+    <div class="layui-form-item layui-search-box">
+        <div class="layui-inline">
+            <label class="layui-form-label">活动状态</label>
+            <div class="layui-input-inline">
+                <select name="status">
+                    <option value="0">全部</option>
+                    <option value="1" th:selected="${status eq 1 ?true:false}">未开始</option>
+                    <option value="2" th:selected="${status eq 2 ?true:false}">进行中</option>
+                    <option value="3" th:selected="${status eq 3 ?true:false}">已结束</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-inline">
+            <button class="layui-btn layui-btn-small">查询</button>
+        </div>
+    </div>
+    <hr/>
+    <div class="layui-btn-box">
+        <button class="layui-btn layui-btn-small" shiro:hasPermission="admin/addActivity.html"
+				lay-href="/admin/addActivity.html" lay-target="dialog">新增</button>
+				
+        <button class="layui-btn layui-btn-small" shiro:hasPermission="admin/changeActivity.html"
+				lay-href="/admin/changeActivity.html" lay-checked="id" lay-target="dialog">修改</button>
+				
+		<button class="layui-btn layui-btn-small" shiro:hasPermission="admin/deleteActivity.html"
+					lay-href="admin/deleteActivity.html" lay-checked="id" lay-target="ajax" lay-tips="确定要删除吗?">删除</button>
+	</div>
+	
+		
+    <div class="layui-conten-box">
+        <table class="layui-table" width="160%">
+            <thead>
+            <tr>
+                <th></th>
+                <th>活动ID</th>
+                <th>活动名称</th>
+                <th>开始时间</th>
+                <th>结束时间</th>
+                <th>更新时间</th>
+            </tr>
+            </thead>
+            <tbody th:if="${not #lists.isEmpty(activityList)}">
+            <tr th:each="activity : ${activityList.data}">
+                <td>
+                    <input type="checkbox" th:name="${activity.id}" lay-skin="primary"/>
+                </td>
+                <td th:text="${activity.id}"></td>
+                <td th:text="${activity.activityName}"></td>
+                <td th:text="${#dates.format(activity.startTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                <td th:text="${#dates.format(activity.endTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                <td th:text="${#dates.format(activity.updateTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="layui-laypage-box" th:if="${not #lists.isEmpty(activityList)}"
+         th:attr="lay-pages=${activityList.totalPages}, lay-curr=${activityList.currentPage}"></div>
+</div>

@@ -1,0 +1,23 @@
+<div xmlns:th="http://www.thymeleaf.org" class="layui-form layui-form-pane" lay-href="prompt/savePrompt.html">
+    <div class="layui-form-item">
+        <label class="layui-form-label">是否正在维护:</label>
+        <div class="layui-input-block">
+            <select type="combox" name="isUpdating">
+                <option th:value="${1}" th:selected="${isUpdating == '1'}">是</option>
+                <option th:value="${0}" th:selected="${isUpdating == '0'}">否</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">开始时间:</label>
+        <div class="layui-input-block">
+            <input id="startTime" class="layui-input" name="startTime" th:value="${startTime}" onclick="layui.laydate({ elem: this, istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">结束时间:</label>
+        <div class="layui-input-block">
+            <input id="endTime" class="layui-input" name="endTime" th:value="${endTime}" onclick="layui.laydate({ elem: this, istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"/>
+        </div>
+    </div>
+</div>
