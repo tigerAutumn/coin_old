@@ -1,1 +1,1 @@
-# hotCoinServer
+# CoinServer
